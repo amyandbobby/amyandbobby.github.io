@@ -12,18 +12,18 @@
 <meta property="og:description" content="Sunday · March 7, 2027 · 4:00 PM — The House on the River, Fort Lauderdale, Florida. Formal invitation to follow.">
 <!-- Deploy: replace the placeholder origin below with the live URL (link scrapers need absolute URLs). -->
 <meta property="og:url" content="https://amy-and-bobby.example/noir.html">
-<meta property="og:image" content="https://amy-and-bobby.example/assets/bw-embrace.jpg">
-<meta property="og:image:alt" content="A couple embracing on a windswept hillside, in black and white">
+<meta property="og:image" content="https://amy-and-bobby.example/assets/amy-bobby-bw.jpg">
+<meta property="og:image:alt" content="Amy and Bobby on the beach at sunset, in black and white">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Amy &amp; Bobby — Save the Date">
 <meta name="twitter:description" content="Sunday · March 7, 2027 · 4:00 PM — The House on the River, Fort Lauderdale, Florida.">
-<meta name="twitter:image" content="https://amy-and-bobby.example/assets/bw-embrace.jpg">
+<meta name="twitter:image" content="https://amy-and-bobby.example/assets/amy-bobby-bw.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230E0E0E'/%3E%3Cpath d='M14 50h36' stroke='%23F5F3EF' stroke-width='.8'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Didot,Bodoni 72,Georgia,serif' font-size='27' fill='%23F5F3EF' letter-spacing='1'%3EA%C2%B7B%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/bw-embrace.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/amy-bobby-bw.jpg" fetchpriority="high">
 <!-- the import map must precede every module fetch, including the preloads below -->
 <script type="importmap">
 { "imports": {
@@ -388,8 +388,8 @@ html.from-designs:not(.intro) .back { display: block; }
 
   <div class="photo-row">
     <figure class="photo" id="photo">
-      <img id="photoImg" src="assets/bw-embrace.jpg" width="1356" height="1800" decoding="async" fetchpriority="high"
-           alt="A couple embracing on a windswept hillside at dusk, in black and white">
+      <img id="photoImg" src="assets/amy-bobby-bw.jpg" width="1356" height="1808" decoding="async" fetchpriority="high"
+           alt="Bobby lifting Amy into a hug at the water's edge at sunset, in black and white">
     </figure>
   </div>
 
@@ -439,7 +439,7 @@ window.CONFIG = {
   venue: 'The House on the River',
   region: 'Fort Lauderdale · Florida',
   note: 'Formal invitation to follow',
-  photo: 'assets/bw-embrace.jpg',
+  photo: 'assets/amy-bobby-bw.jpg',
   event: {
     uid: '20270307-amy-bobby@save-the-date',
     start: '20270307T210000Z',   // 4:00 PM EST
@@ -1540,7 +1540,7 @@ function startRipple() {
   const NR = 10;
   const ripples = Array.from({ length: NR }, () => new THREE.Vector4(-1e4, -1e4, -100, 0));
   const mat = new THREE.ShaderMaterial({
-    uniforms: { tImg: { value: tex }, uBox: { value: new THREE.Vector2(1, 1) }, uImg: { value: new THREE.Vector2(img.naturalWidth || 1356, img.naturalHeight || 1800) },
+    uniforms: { tImg: { value: tex }, uBox: { value: new THREE.Vector2(1, 1) }, uImg: { value: new THREE.Vector2(img.naturalWidth || 1356, img.naturalHeight || 1808) },
       uPos: { value: new THREE.Vector2(.5, .16) }, uR: { value: ripples }, uTime: { value: 0 }, uPtr: { value: new THREE.Vector2(-1e4, -1e4) }, uHover: { value: 0 } },
     vertexShader: QUAD_VERT,
     fragmentShader: /* glsl */`

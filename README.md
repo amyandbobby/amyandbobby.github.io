@@ -26,7 +26,7 @@ Two URL options help when checking the intro: `?skip=1` shows the finished card 
 
 The names, date, venue and calendar event live in the `CONFIG` block near the top of each page's first script. Change them there.
 
-The photos in `assets/` are AI-generated stand-ins. Replace `assets/bw-embrace.jpg` (black & white) and `assets/garden-arch.jpg` (floral) with the couple's own photos, keeping the file names, or point `CONFIG.photo` at a new file. The other images in `assets/` are spare alternates.
+The couple's photo is `assets/amy-bobby-bw.jpg` (black & white, cropped close on the couple) and `assets/amy-bobby.jpg` (floral, full colour). To use a different photo, replace those files (3:4, 1356 × 1808) or point `CONFIG.photo` at a new file. The other images in `assets/` are AI-generated spares from the original template.
 
 ## Publish
 
