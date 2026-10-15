@@ -1,0 +1,1289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Isabella &amp; Julian · Save the Date</title>
+<meta name="description" content="Save the date: Isabella &amp; Julian, Saturday 20 March 2027, Villa Lucia, Val d’Orcia, Tuscany. Formal invitation to follow.">
+<meta name="theme-color" content="#F4ECE1">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Isabella &amp; Julian · Save the Date">
+<meta property="og:description" content="Saturday 20 March 2027 · Villa Lucia, Val d’Orcia, Tuscany">
+<!-- when hosted: add <meta property="og:url"> and make og:image / twitter:image absolute (https://your-domain/…) — link scrapers ignore relative URLs -->
+<meta property="og:image" content="assets/og-floral.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Save the Date — Isabella &amp; Julian, 20 · 03 · 2027, Villa Lucia, Val d’Orcia, Tuscany">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/og-floral.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23F4ECE1'/%3E%3Ccircle cx='32' cy='32' r='27' fill='none' stroke='%2394455A' stroke-width='1.5'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Didot,Bodoni 72,Bodoni MT,serif' font-size='23' fill='%232C3524'%3EI%26amp;J%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="image" href="assets/garden-arch.jpg">
+<!-- the import map must come before any modulepreload, or Chrome resolves 'three' without it -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<!-- the whole three.js module graph downloads in parallel with the fonts and the photograph -->
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/misc/GPUComputationRenderer.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/RenderPass.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/ShaderPass.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/Pass.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/MaskPass.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/CopyShader.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/LuminosityHighPassShader.js">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@28..96,400..600&family=Cormorant+Garamond:ital,wght@1,500&family=Jost:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --paper:#F4ECE1;          /* linen */
+  --sand:#D9C4A9;
+  --rose:#C8697F;           /* dusty rose (decor) */
+  --rose-ink:#94455A;       /* rose for text: 5.5:1 on paper */
+  --terra:#DE7849;
+  --sage:#748A4E;
+  --olive:#2C3524;          /* ink: 10.9:1 on paper */
+  --olive-2:#3E4733;        /* secondary ink: 8.3:1 */
+  --rule:rgba(44,53,36,.34);
+
+  --pad-t:max(16px, env(safe-area-inset-top));
+  --pad-b:max(14px, env(safe-area-inset-bottom));
+  --pad-x:max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+
+  /* portrait (phone) scale */
+  --g:clamp(6px, 1.25svh, 14px);
+  --fs-script:clamp(28px, 4.3svh, 40px);
+  --fs-name:clamp(24px, 3.85svh, 36px);
+  --fs-date:clamp(46px, 7.8svh, 76px);
+  --fs-place:clamp(18px, 2.55svh, 24px);
+  --fs-label:12px;
+  --fs-note:clamp(16px, 2.05svh, 18px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--paper);color:var(--olive)}
+body{
+  font-family:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity .7s ease}
+#gl.on{opacity:1}
+
+/* ───────────── the card ───────────── */
+.card{
+  position:relative;z-index:1;width:100%;height:100vh;height:100svh;
+  display:grid;justify-items:center;align-content:stretch;text-align:center;
+  padding:var(--pad-t) var(--pad-x) var(--pad-b);
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:auto minmax(0,1fr) auto auto auto auto auto auto auto;
+  grid-template-areas:"eyebrow" "photo" "n1" "date" "n2" "rule" "when" "place" "foot";
+}
+.eyebrow{grid-area:eyebrow;font:400 var(--fs-script)/1.12 "Pinyon Script",cursive;color:var(--rose-ink);margin-bottom:calc(var(--g)*.7);letter-spacing:.01em}
+
+.photo{grid-area:photo;width:100%;height:100%;min-height:0;container-type:size;display:flex;align-items:center;justify-content:center}
+.frame{position:relative;width:min(calc(100cqw - 18px), calc((100cqh - 9px) * .75));aspect-ratio:3/4}
+.arch{position:absolute;inset:0;border-radius:9999px 9999px 0 0;overflow:hidden;background:transparent}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:49% 38%;transform:scale(var(--zoom,1.12));transform-origin:49% 38%;display:block;transition:opacity .5s}
+.frame-line{position:absolute;inset:-8px -8px -8px;border:1px solid var(--rule);border-radius:9999px 9999px 0 0;pointer-events:none}
+
+.names{display:contents;font-weight:500}
+.n1,.n2{font:500 var(--fs-name)/1 "Bodoni Moda",Didot,"Bodoni 72",serif;font-variation-settings:"opsz" var(--opsz-name,28);text-transform:uppercase;letter-spacing:.11em;margin-right:-.11em;color:var(--olive)}
+.n1{grid-area:n1;margin-top:calc(var(--g)*1.5)}
+.n2{grid-area:n2}
+.amp{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.date{
+  grid-area:date;font:400 var(--fs-date)/.86 "Bodoni Moda",Didot,"Bodoni 72",serif;color:var(--olive);
+  font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1;
+  display:grid;grid-template-columns:auto auto auto;grid-template-areas:". dd ." "s1 mm s2" ". yy .";
+  align-items:center;justify-items:center;column-gap:.16em;margin:calc(var(--g)*.9) 0 calc(var(--g)*.75);
+  letter-spacing:.01em;font-variation-settings:"opsz" 96;
+}
+.date .dd{grid-area:dd}.date .mm{grid-area:mm}.date .yy{grid-area:yy}
+.date .s1{grid-area:s1}.date .s2{grid-area:s2}
+.date .sep{font-size:.62em;color:var(--rose-ink);line-height:1}
+.date .cc{display:none}
+
+.rule{grid-area:rule;display:flex;align-items:center;gap:12px;width:min(78%, 300px);margin:calc(var(--g)*1.4) 0 calc(var(--g)*1.1)}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--rule)}
+.dots{display:flex;gap:6px}
+.dots i{width:6px;height:6px;border-radius:50%;display:block}
+
+.label{font:500 var(--fs-label)/1.35 "Jost",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.26em;margin-right:-.26em;color:var(--olive)}
+.when{grid-area:when}
+.place{grid-area:place;margin-top:calc(var(--g)*.9)}
+.venue{display:block;font:600 var(--fs-place)/1.15 "Bodoni Moda",Didot,serif;font-variation-settings:"opsz" 28;text-transform:uppercase;letter-spacing:.14em;margin-right:-.14em}
+.region{display:block;margin-top:5px}
+.foot{grid-area:foot;margin-top:calc(var(--g)*1.25);display:flex;flex-direction:column;align-items:center;gap:calc(var(--g)*.35)}
+.note{font:italic 500 var(--fs-note)/1.25 "Cormorant Garamond",Georgia,serif;color:var(--olive-2);letter-spacing:.01em}
+.links{display:flex;align-items:center;gap:10px}
+.links a{font:500 var(--fs-link,11.5px)/1 "Jost",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--olive);text-decoration:none;
+  padding:9px 2px;margin:-4px 0;background:linear-gradient(var(--rule),var(--rule)) 0 calc(100% - 6px)/100% 1px no-repeat;transition:background-size .3s}
+.links a:hover{background-image:linear-gradient(var(--rose-ink),var(--rose-ink))}
+.links a:focus-visible,.skip:focus-visible{outline:1px solid var(--rose-ink);outline-offset:3px}
+.links .mid{width:3px;height:3px;border-radius:50%;background:var(--rose-ink);opacity:.8}
+
+.skip{position:fixed;z-index:3;right:max(16px, env(safe-area-inset-right));bottom:max(14px, env(safe-area-inset-bottom));
+  font:500 11.5px/1 "Jost",system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--olive-2);
+  background:none;border:0;padding:10px 4px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .5s}
+.skip.on{opacity:.82;pointer-events:auto}
+.back{position:fixed;z-index:3;display:none;top:max(2px, env(safe-area-inset-top));left:max(6px, env(safe-area-inset-left));padding:8px 10px;
+  font:500 11px/1 "Jost",system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--olive-2);text-decoration:none;opacity:.8}
+.back:hover{opacity:1;color:var(--rose-ink)}
+.back:focus-visible{opacity:1;outline:1px solid var(--rose-ink);outline-offset:2px}
+html.from-designs.done .back,html.from-designs.static .back{display:block}
+
+/* ───────────── landscape: centred editorial (ref #1 desktop) ───────────── */
+@media (orientation:landscape){
+  :root{
+    --g:clamp(6px, 1.45svh, 18px);
+    --fs-script:clamp(26px, 4.6svh, 52px);
+    --fs-name:clamp(28px, 5.9svh, 68px);
+    --fs-date:clamp(54px, 12.6svh, 150px);
+    --fs-place:clamp(17px, 2.6svh, 28px);
+    --fs-label:clamp(12px, 1.4svh, 15px);
+    --fs-note:clamp(16px, 2.05svh, 22px);
+    --fs-link:clamp(11.5px, 1.3svh, 13px);
+    --pad-t:max(clamp(24px, 4.4svh, 60px), env(safe-area-inset-top));
+    --pad-b:max(clamp(20px, 3.8svh, 52px), env(safe-area-inset-bottom));
+  }
+  .card{grid-template-rows:auto auto minmax(0,1fr) auto auto auto auto auto;
+    grid-template-areas:"eyebrow" "names" "photo" "date" "when" "place" "rule" "foot";}
+  .eyebrow{margin-bottom:0}
+  .names{grid-area:names;display:flex;align-items:baseline;justify-content:center;gap:.3em;margin:calc(var(--g)*.2) 0 calc(var(--g)*2.3)}
+  .n1,.n2{margin:0 -.11em 0 0}
+  .amp{display:inline;font:400 calc(var(--fs-name)*1.12)/.8 "Pinyon Script",cursive;color:var(--rose-ink);letter-spacing:0;transform:translateY(.02em)}
+  .frame{width:min(calc(100cqw - 18px), calc((100cqh - 8px) * .75))}
+  .arch,.frame-line{-webkit-mask-image:linear-gradient(#000 64%, transparent 100%);mask-image:linear-gradient(#000 64%, transparent 100%)}
+  .frame-line{bottom:0}
+  .date{display:flex;align-items:center;justify-content:center;gap:.24em;line-height:1;
+    margin:calc(var(--fs-date) * -.5) 0 calc(var(--g)*.6);position:relative;z-index:2}
+  .date .sep{font-size:.7em;transform:translateY(-.05em)}
+  .date .cc{display:inline}
+  .when{margin-top:calc(var(--g)*.2)}
+  .place{margin-top:calc(var(--g)*.7)}
+  .venue{display:inline}
+  .region{display:inline;margin:0}
+  .place .bul{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--rose-ink);margin:0 1em;vertical-align:.32em}
+  .rule{width:min(34vw, 420px);margin:calc(var(--g)*1.25) 0 calc(var(--g)*.95)}
+  .foot{flex-direction:row;gap:22px;margin-top:0}
+  .foot .note::after{content:"";display:inline-block;width:28px;height:1px;background:var(--rule);vertical-align:.3em;margin-left:22px}
+}
+@media (orientation:portrait){ .place .bul{display:none} }
+@media (orientation:landscape) and (max-height:520px){
+  .photo{display:none}
+  .card{grid-template-rows:none;grid-auto-rows:auto;align-content:center;grid-template-areas:"eyebrow" "names" "date" "when" "place" "rule" "foot"}
+  .date{margin-top:0}
+}
+@media (max-width:359px){ .label{letter-spacing:.2em;margin-right:-.2em} }
+
+/* ───────────── reveal states ───────────── */
+html.js:not(.static):not(.done) .rv{opacity:0}
+html.js:not(.static):not(.done) .arch img{opacity:0}
+html.glphoto .arch img{opacity:0 !important}
+html.static .rv,html.static .arch img{animation:rise 1s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 110ms + 80ms)}
+html.static .arch img{animation-name:fade}
+@keyframes rise{from{opacity:0;transform:translateY(10px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  html.static .rv,html.static .arch img{animation:fade .7s ease both;animation-delay:0s}
+  #gl{transition:none}
+}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<main class="card" id="card">
+  <p class="eyebrow rv" style="--i:0" data-c="eyebrow">Save the Date</p>
+
+  <figure class="photo">
+    <div class="frame" id="frame">
+      <span class="frame-line rv" style="--i:1" aria-hidden="true"></span>
+      <div class="arch" id="arch"><img id="photo" src="assets/garden-arch.jpg" width="1356" height="1808" alt="Isabella and Julian laughing together beneath a stone garden arch draped in roses, ranunculus and lilies" decoding="async"></div>
+    </div>
+  </figure>
+
+  <h1 class="names" id="names">
+    <span class="n1 ink rv" style="--i:2" id="n1" data-c="first1">Isabella</span><span class="sr"> and </span>
+    <span class="amp rv" style="--i:2" aria-hidden="true">&amp;</span>
+    <span class="n2 ink rv" style="--i:2" id="n2" data-c="first2">Julian</span>
+  </h1>
+
+  <p class="date ink rv" style="--i:3" id="date" aria-hidden="true"><span class="dd">20</span><span class="sep s1">·</span><span class="mm">03</span><span class="sep s2">·</span><span class="yy"><span class="cc">20</span>27</span></p>
+
+  <div class="rule rv" style="--i:4" aria-hidden="true"><span class="dots"><i style="background:#D9C4A9"></i><i style="background:#C8697F"></i><i style="background:#DE7849"></i><i style="background:#748A4E"></i><i style="background:#2C3524"></i></span></div>
+
+  <p class="when label rv" style="--i:4" data-c="when">Saturday · 20 March 2027</p>
+  <p class="place rv" style="--i:5"><span class="venue" data-c="venue">Villa Lucia</span><span class="bul" aria-hidden="true"></span><span class="region label" data-c="region">Val d’Orcia, Tuscany</span></p>
+
+  <div class="foot rv" style="--i:6">
+    <p class="note" data-c="note">Formal invitation to follow</p>
+    <p class="links"><a id="ics" href="#" download="isabella-julian-20-03-2027.ics">Add to calendar</a><span class="mid" aria-hidden="true"></span><a id="gcal" href="#" target="_blank" rel="noopener">Google</a></p>
+  </div>
+</main>
+
+<button class="skip" id="skip" type="button" tabindex="-1">Skip intro</button>
+<a class="back" id="back" href="./" aria-label="Back to both designs">‹ Back</a>
+
+<script>
+/* ═════════════════════════ CONFIG ═════════════════════════ */
+window.CONFIG = {
+  eyebrow: 'Save the Date',
+  first1: 'Isabella', last1: 'Moretti',
+  first2: 'Julian',   last2: 'Hale',
+  when: 'Saturday · 20 March 2027',
+  date: { dd: '20', mm: '03', yyyy: '2027' },
+  venue: 'Villa Lucia',
+  region: 'Val d’Orcia, Tuscany',
+  note: 'Formal invitation to follow',
+  event: {
+    uid: 'isabella-julian-20270320@villa-lucia.save-the-date',
+    start: '20270320T150000Z', end: '20270320T230000Z',
+    summary: 'Isabella & Julian — Wedding',
+    location: "Villa Lucia, Val d'Orcia, Tuscany, Italy",
+    description: 'Save the date — formal invitation to follow.'
+  },
+  photo: { src: 'assets/garden-arch.jpg', w: 1356, h: 1808, focus: [0.49, 0.38], zoom: 1.12 },
+  palette: { paper: '#F4ECE1', sand: '#D9C4A9', rose: '#C8697F', terracotta: '#DE7849', sage: '#748A4E', olive: '#2C3524' },
+  intro: { fallbackMs: 4500 }
+};
+
+(function () {
+  var C = window.CONFIG, de = document.documentElement;
+  // bind copy
+  document.querySelectorAll('[data-c]').forEach(function (el) { var v = C[el.getAttribute('data-c')]; if (v) el.textContent = v; });
+
+  // calendar: valid RFC 5545 with CRLF + folding
+  function esc(s) { return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n'); }
+  function fold(line) {
+    var out = [], cur = '', bytes = 0, enc = new TextEncoder();
+    for (var ch of line) { var b = enc.encode(ch).length; if (bytes + b > 74) { out.push(cur); cur = ' '; bytes = 1; } cur += ch; bytes += b; }
+    out.push(cur); return out.join('\r\n');
+  }
+  var now = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  var E = C.event;
+  var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Isabella & Julian//Save the Date//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+    'BEGIN:VEVENT', 'UID:' + E.uid, 'DTSTAMP:' + now, 'DTSTART:' + E.start, 'DTEND:' + E.end,
+    'SUMMARY:' + esc(E.summary), 'LOCATION:' + esc(E.location), 'DESCRIPTION:' + esc(E.description),
+    'END:VEVENT', 'END:VCALENDAR'].map(fold).join('\r\n') + '\r\n';
+  var a = document.getElementById('ics'), g = document.getElementById('gcal');
+  var gUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(E.summary) +
+    '&dates=' + E.start + '/' + E.end + '&location=' + encodeURIComponent(E.location) + '&details=' + encodeURIComponent(E.description);
+  g.href = gUrl;
+  g.setAttribute('aria-label', 'Add to Google Calendar');
+  // a framed viewer (an embed, a shared preview) blocks downloads the page starts itself,
+  // so there "Add to calendar" opens the web calendar instead of saving an .ics file
+  var framed = true; try { framed = window.self !== window.top; } catch (_) {}
+  if (framed) {
+    a.removeAttribute('download'); a.href = gUrl; a.target = '_blank'; a.rel = 'noopener';
+    g.style.display = 'none';
+    var mid = document.querySelector('.links .mid'); if (mid) mid.style.display = 'none';
+  } else {
+    a.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+    a.addEventListener('click', function (e) {
+      try { var url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' })); a.href = url; setTimeout(function () { URL.revokeObjectURL(url); }, 4000); } catch (_) {}
+    });
+  }
+
+  // opened from the two-design overview: a quiet way back, once the card is showing
+  try { if (sessionStorage.getItem('std-designs') === '1') de.classList.add('from-designs'); } catch (_) {}
+  document.getElementById('back').addEventListener('click', function (e) {
+    if (history.length > 1) { e.preventDefault(); history.back(); }
+  });
+
+  // state shared with the WebGL module + graceful fallbacks
+  var q = new URLSearchParams(location.search);
+  var S = window.__std = { started: false, revealed: false, params: q,
+    reduced: matchMedia('(prefers-reduced-motion: reduce)').matches };
+  S.reveal = function (why) { // CSS-only card (no WebGL / reduced motion / CDN failure)
+    if (S.revealed || (S.started && why !== 'error')) return; S.revealed = true; S.why = why;
+    de.classList.add('static');
+  };
+  S.metrics = function () {
+    de.setAttribute('data-metrics', JSON.stringify({ sh: de.scrollHeight, ih: innerHeight, sw: de.scrollWidth, iw: innerWidth,
+      bodySH: document.body.scrollHeight, cardH: Math.round(document.getElementById('card').getBoundingClientRect().height) }));
+  };
+  // a skip asked for while the scene is still loading is honoured when it starts
+  addEventListener('keydown', function (e) { if (!S.started && e.key === 'Escape') S.skipReq = true; });
+  addEventListener('pointerdown', function (e) { if (!S.started && !(e.target.closest && e.target.closest('a'))) S.skipReq = true; });
+  if (S.reduced) S.reveal('reduced-motion');
+  else setTimeout(function () { S.reveal('timeout'); }, C.intro.fallbackMs);
+  addEventListener('load', S.metrics);
+})();
+</script>
+
+<script type="module" onerror="window.__std && __std.reveal('cdn')">
+import * as THREE from 'three';
+import { GPUComputationRenderer } from 'three/addons/misc/GPUComputationRenderer.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+
+const STD = window.__std, CFG = window.CONFIG;
+const de = document.documentElement;
+const Q = STD.params;
+const T_FREEZE = Q.has('t') ? Math.max(0, parseFloat(Q.get('t')) || 0) : null;
+const SKIP = Q.get('skip') === '1';
+
+THREE.ColorManagement.enabled = false; // everything is authored in display (sRGB) values to match CSS exactly
+
+/* ─────────── timeline (seconds) ─────────── */
+const TL = {
+  gather: [1.0, 2.45], settle: [1.85, 2.75], gust: [3.38, 3.72],
+  ink: [2.2, 3.15], namesHTML: [3.15, 3.42], inkOff: 3.5, protect: [1.9, 2.3],
+  reveal: [3.35, 5.0], end: 5.6,
+};
+const DOM_TL = [ // selector, start, duration, mode
+  ['.eyebrow', 3.62, .85], ['.amp', 3.1, .32, 'fade'], ['.frame-line', 4.35, .9, 'fade'],
+  ['#date', 3.85, .85], ['.rule', 4.15, .8], ['.when', 4.1, .85], ['.place', 4.28, .85], ['.foot', 4.5, .85],
+];
+
+/* ─────────── helpers ─────────── */
+const clamp01 = x => Math.min(1, Math.max(0, x));
+const seg = (t, a, b) => clamp01((t - a) / (b - a));
+const sstep = (a, b, t) => { const x = seg(t, a, b); return x * x * (3 - 2 * x); };
+const outCubic = x => 1 - Math.pow(1 - x, 3);
+const inOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const hex = h => { const n = parseInt(h.slice(1), 16); return new THREE.Vector3((n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255); };
+function mulberry(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const isLandscape = () => innerWidth >= innerHeight;
+
+/* ─────────── performance tier ─────────── */
+const coarse = matchMedia('(pointer:coarse)').matches;
+const smallScreen = Math.min(screen.width, screen.height) < 600;
+const cores = navigator.hardwareConcurrency || 4, mem = navigator.deviceMemory || 4;
+const TIER = (cores <= 3 || mem <= 2) ? 'low' : (coarse || smallScreen) ? 'phone' : 'desktop';
+const SIM = { desktop: 26, phone: 18, low: 12 }[TIER];           // 676 / 324 / 144 petals
+const DPR_INTRO = Math.min(devicePixelRatio || 1, TIER === 'desktop' ? 2 : TIER === 'phone' ? 1.5 : 1.25);
+const DPR_AMB = Math.min(devicePixelRatio || 1, TIER === 'low' ? 1.5 : 2);
+const AMB_COUNT = TIER === 'desktop' ? 12 : 8;
+
+/* ─────────── GLSL chunks ─────────── */
+const NOISE2 = /* glsl */`
+float hash12(vec2 p){ vec3 p3 = fract(vec3(p.xyx) * .1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }
+float vnoise(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f*f*(3.-2.*f);
+  return mix(mix(hash12(i), hash12(i+vec2(1,0)), u.x), mix(hash12(i+vec2(0,1)), hash12(i+vec2(1,1)), u.x), u.y); }
+float fbm4(vec2 p){ float s = 0., a = .5; for (int i = 0; i < 4; i++){ s += a*vnoise(p); p = p*2.03 + 17.17; a *= .5; } return s/.9375; }
+float fbm5(vec2 p){ float s = 0., a = .5; for (int i = 0; i < 5; i++){ s += a*vnoise(p); p = mat2(1.6,1.2,-1.2,1.6)*p + 11.3; a *= .5; } return s/.96875; }
+`;
+const SNOISE3 = /* glsl */`
+vec4 permute(vec4 x){ return mod(((x*34.0)+1.0)*x, 289.0); }
+vec4 taylorInvSqrt(vec4 r){ return 1.79284291400159 - 0.85373472095314 * r; }
+float snoise(vec3 v){
+  const vec2 C = vec2(1.0/6.0, 1.0/3.0); const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+  vec3 i = floor(v + dot(v, C.yyy)); vec3 x0 = v - i + dot(i, C.xxx);
+  vec3 g = step(x0.yzx, x0.xyz); vec3 l = 1.0 - g; vec3 i1 = min(g.xyz, l.zxy); vec3 i2 = max(g.xyz, l.zxy);
+  vec3 x1 = x0 - i1 + C.xxx; vec3 x2 = x0 - i2 + 2.0*C.xxx; vec3 x3 = x0 - 1.0 + 3.0*C.xxx;
+  i = mod(i, 289.0);
+  vec4 p = permute(permute(permute(i.z + vec4(0.0, i1.z, i2.z, 1.0)) + i.y + vec4(0.0, i1.y, i2.y, 1.0)) + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+  float n_ = 1.0/7.0; vec3 ns = n_ * D.wyz - D.xzx;
+  vec4 j = p - 49.0 * floor(p * ns.z * ns.z); vec4 x_ = floor(j * ns.z); vec4 y_ = floor(j - 7.0 * x_);
+  vec4 x = x_ * ns.x + ns.yyyy; vec4 y = y_ * ns.x + ns.yyyy; vec4 h = 1.0 - abs(x) - abs(y);
+  vec4 b0 = vec4(x.xy, y.xy); vec4 b1 = vec4(x.zw, y.zw);
+  vec4 s0 = floor(b0)*2.0 + 1.0; vec4 s1 = floor(b1)*2.0 + 1.0; vec4 sh = -step(h, vec4(0.0));
+  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy; vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+  vec3 p0 = vec3(a0.xy, h.x); vec3 p1 = vec3(a0.zw, h.y); vec3 p2 = vec3(a1.xy, h.z); vec3 p3 = vec3(a1.zw, h.w);
+  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2,p2), dot(p3,p3)));
+  p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0); m = m * m;
+  return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+}
+vec3 snoiseVec3(vec3 x){ return vec3(snoise(x), snoise(vec3(x.y - 19.1, x.z + 33.4, x.x + 47.2)), snoise(vec3(x.z + 74.2, x.x - 124.5, x.y + 99.4))); }
+vec3 curlNoise(vec3 p){
+  const float e = .1; vec3 dx = vec3(e,0,0), dy = vec3(0,e,0), dz = vec3(0,0,e);
+  vec3 px0 = snoiseVec3(p - dx), px1 = snoiseVec3(p + dx), py0 = snoiseVec3(p - dy), py1 = snoiseVec3(p + dy), pz0 = snoiseVec3(p - dz), pz1 = snoiseVec3(p + dz);
+  return vec3(py1.z - py0.z - pz1.y + pz0.y, pz1.x - pz0.x - px1.z + px0.z, px1.y - px0.y - py1.x + py0.x) / (2.0*e);
+}
+`;
+const FS_VERT = `void main(){ gl_Position = vec4(position.xy, 0., 1.); }`;
+
+/* static paper: linen fibres, mottling, weave, tooth, low warm sun (rendered once per size) */
+const PAPER_FRAG = /* glsl */`
+uniform vec2 uResPx; uniform float uDpr; uniform vec3 uPaper;
+${NOISE2}
+void main(){
+  vec2 p = vec2(gl_FragCoord.x, uResPx.y - gl_FragCoord.y) / uDpr;
+  vec2 res = uResPx / uDpr;
+  float mott = fbm5(p * .0042) - .5;
+  float cloud = fbm4(p * .02 + 3.1) - .5;
+  float fib = 0.;
+  for (int k = 0; k < 4; k++){
+    float a = float(k) * 1.37 + .3; mat2 R = mat2(cos(a), -sin(a), sin(a), cos(a));
+    vec2 q = R * p; float n = vnoise(q * vec2(.75, .045) + float(k) * 13.1);
+    fib += smoothstep(.62, .9, n) - smoothstep(.1, .3, n) * .5;
+  }
+  float weave = sin(p.x * 1.85) * sin(p.y * 1.85);
+  float tooth = hash12(floor(p * uDpr) + 7.) - .5;
+  vec3 c = uPaper * (1. + mott * .03 + cloud * .014 + tooth * .012 + weave * .003);
+  c += vec3(.010, .008, .005) * (fib - .1);
+  vec2 uv = p / res;
+  float sun = clamp(1. - length((uv - vec2(-.08, -.12)) * vec2(.85, 1.15)), 0., 1.);
+  c *= mix(vec3(.992, .99, .988), vec3(1.022, 1.012, .992), smoothstep(0., 1., sun));
+  gl_FragColor = vec4(c, 1.);
+}`;
+
+/* dappled leaf shadow gobo (1/3 res): cellular leaves, rotated per cell, stretched along the low sun,
+   penumbra varying crisp→soft; warm sun flecks in the gaps; never behind type */
+const DAPPLE_FRAG = /* glsl */`
+uniform vec2 uSize; uniform float uScale; uniform float uTime; uniform float uUnit;
+uniform vec4 uTxt[9]; uniform float uMask; uniform float uFall;
+${NOISE2}
+vec2 hash22(vec2 p){ vec3 p3 = fract(vec3(p.xyx) * vec3(.1031, .1030, .0973)); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.xx + p3.yz) * p3.zy); }
+float sdR(vec2 p, vec4 r){ vec2 c = (r.xy + r.zw) * .5, h = (r.zw - r.xy) * .5; vec2 d = abs(p - c) - h; return length(max(d, 0.)) + min(max(d.x, d.y), 0.); }
+const mat2 SUN = mat2(.8, .6, -.6, .8);                   // low sun from the upper left
+float canopy(vec2 p, float t, float cell, float seed, float soft){
+  vec2 q = SUN * p / cell; q.x /= 2.2;                      // projected shadows: 1 : 2.2 along the sun
+  q += (vec2(vnoise(q * .3 + t * .07 + seed), vnoise(q * .3 + 9.1 - t * .06)) - .5) * .45;   // the branch sways
+  vec2 ip = floor(q), fp = fract(q);
+  float pen = mix(.03, .12, smoothstep(.3, .7, fbm4(p / cell * .35 + seed + 4.))) * soft;  // crisp ↔ soft edges
+  float cov = 0.;
+  for (int j = -1; j <= 1; j++) for (int i = -1; i <= 1; i++) {
+    vec2 g = vec2(float(i), float(j)), id = ip + g;
+    vec2 o = hash22(id + seed);
+    float here = step(.24, hash12(id * 1.7 + seed));                    // some cells are open sky
+    o = .5 + .34 * sin(t * (.22 + .3 * o.yx) + 6.2831 * o);              // leaves flutter on their stems
+    float a = hash12(id * 3.3 + seed) * 3.1416;
+    vec2 l = mat2(cos(a), -sin(a), sin(a), cos(a)) * (g + o - fp);
+    float sz = .3 + .2 * hash12(id * 5.1 + seed);
+    vec2 e = l / sz;
+    float tip = clamp(1. - .38 * e.x, .35, 2.);                          // ovate leaf, pointed tip
+    float lf = (length(vec2(e.x, e.y * 2.3 / tip)) - 1.) * sz;
+    cov = max(cov, here * (1. - smoothstep(-pen, pen, lf)));
+  }
+  return cov;
+}
+void main(){
+  vec2 p = vec2(gl_FragCoord.x, uSize.y - gl_FragCoord.y) * uScale;      // css px, top-left origin
+  float t = uTime;
+  float u = uUnit;                                                       // ≈ short side of the viewport
+  float branch = smoothstep(.44, .66, fbm4(SUN * p / (u * .55) + vec2(t * .012, 2.)));   // where the boughs hang
+  float near = canopy(p, t, u * .13, 0., 1.6);                         // closer leaves: larger, softer
+  float far = canopy(p + 37., t * 1.2, u * .075, 17.3, 1.);           // further leaves: smaller, crisper
+  float cov = max(near, far * .85);
+  float shade = cov * branch;
+  vec2 fq = SUN * p / (u * .03); fq.x /= 1.6;
+  float fleck = branch * (1. - cov) * smoothstep(.66, .86, vnoise(fq + vec2(t * .09, -t * .05)));   // pin-hole suns in the gaps
+  float sd = 1e4;
+  for (int i = 0; i < 9; i++) { vec4 r = uTxt[i]; if (r.z > r.x) sd = min(sd, sdR(p, r)); }
+  float keep = mix(1., smoothstep(0., uFall, sd), uMask);
+  gl_FragColor = vec4(shade * keep, fleck * keep, 0., 1.);
+}`;
+
+/* composite: paper × dapple, the photograph (watercolour bleed / wind ripple), the inked names, grain + vignette */
+const COMP_FRAG = /* glsl */`
+uniform sampler2D tPaper; uniform sampler2D tDapple; uniform sampler2D tPhoto; uniform sampler2D tInk;
+uniform vec2 uResPx; uniform float uDpr; uniform float uTime; uniform float uDap; uniform float uGrain; uniform float uVig; uniform vec3 uPaper;
+uniform vec4 uPhotoRect; uniform vec2 uImg; uniform vec3 uCrop; uniform float uReveal; uniform float uFadeFrac; uniform float uPhotoOn;
+uniform vec3 uPtr; uniform float uBreeze;
+uniform vec4 uInkRect; uniform float uInk; uniform float uInkOn; uniform float uInkDir; uniform float uInkGamma;
+${NOISE2}
+vec2 coverUV(vec2 q){
+  float ra = uPhotoRect.z / uPhotoRect.w, ri = uImg.x / uImg.y;
+  vec2 s = ra > ri ? vec2(1., ri / ra) : vec2(ra / ri, 1.);
+  vec2 F = uCrop.xy;
+  vec2 q2 = F + (q - F) / uCrop.z;            // CSS transform: scale(zoom) about object-position
+  vec2 uv = q2 * s + (1. - s) * F;           // CSS object-fit: cover + object-position
+  return vec2(uv.x, 1. - uv.y);
+}
+void main(){
+  vec2 fc = gl_FragCoord.xy; vec2 suv = fc / uResPx;
+  vec2 p = vec2(fc.x, uResPx.y - fc.y) / uDpr;
+  vec3 paper = texture2D(tPaper, suv).rgb;
+  vec2 dap = texture2D(tDapple, suv).rg;
+  vec3 col = paper * (1. + uDap * vec3(.22, .15, .02)) * (1. - uDap * dap.r * vec3(1.08, 1., .86));   // warm low sun, cooler leaf shadows
+  col += uDap * .9 * dap.g * vec3(1., .93, .78);                                                        // warm sun flecks in the gaps
+
+  if (uPhotoOn > .5) {
+    vec2 lp = p - uPhotoRect.xy; float w = uPhotoRect.z, h = uPhotoRect.w;
+    if (lp.x > -2. && lp.y > -2. && lp.x < w + 2. && lp.y < h + 2.) {
+      float r = w * .5;
+      float d = lp.y < r ? length(lp - vec2(r)) - r : max(abs(lp.x - r) - r, lp.y - h);
+      float shape = clamp(.5 - d * uDpr, 0., 1.);
+      float fb = uFadeFrac > 0. ? clamp((h - lp.y) / (h * uFadeFrac), 0., 1.) : 1.;
+      // wind: faint breeze shimmer + pointer ripple
+      vec2 dp = lp - (uPtr.xy - uPhotoRect.xy); float dl = length(dp);
+      vec2 off = dp / (dl + .001) * sin(dl * .075 - uTime * 3.4) * 2.6 * uPtr.z * exp(-dl * dl / (2. * 95. * 95.));
+      off += (vec2(vnoise(lp * .011 + uTime * .23), vnoise(lp * .011 + 7.7 - uTime * .19)) - .5) * 1.5 * uBreeze * (1. - lp.y / h * .7);
+      vec2 uv = coverUV((lp + off) / vec2(w, h));
+      float m = 1., rim = 0., wash = 0., bias = -.35;
+      if (uReveal < 1.) {
+        vec2 nq = lp / w;
+        vec2 wv = vec2(fbm4(nq * 1.8 + vec2(uTime * .05, 0.)), fbm4(nq * 1.8 + vec2(5.2, 1.3) - uTime * .04));
+        float flow = fbm4(nq * 3.2 + wv * 1.7);
+        float hw = h / w;
+        // paint bleeds in from the outline where the petals were, towards the centre; the faces fill last-but-one
+        float depth = (lp.y < r ? r - length(lp - vec2(r)) : r - abs(lp.x - r)) / w;   // 0 at the arch outline → .5 on the centre line (the base is not an edge)
+        float field = depth * 1.05 + nq.y / hw * .6 + (flow - .5) * .55 + (fbm4(nq * 16. + wv * 3.) - .5) * .07 + (vnoise(nq * 70.) - .5) * .025;
+        float front = mix(-.3, 1.45, uReveal);
+        float inner = front - field;
+        m = smoothstep(-.006, .028, inner);                                      // a crisp, ragged wet edge — not fog
+        rim = exp(-pow((inner - .022) / .022, 2.)) * m;
+        wash = (1. - smoothstep(0., .3, -inner)) * (1. - m);                    // a pale wet underpainting runs ahead of the pigment
+        bias = mix(.7, -.35, smoothstep(0., .06, inner));
+      }
+      vec3 ph = texture2D(tPhoto, uv, bias).rgb;
+      ph *= mix(vec3(1.), paper / uPaper, .55);                       // printed on linen
+      vec3 avg = texture2D(tPhoto, uv, 6.).rgb;
+      ph = mix(ph, ph * .8 * (avg / max(avg.r, max(avg.g, max(avg.b, .01)))), rim * .5);   // pooled pigment: deeper, same hue
+      ph *= 1. - rim * .1 * hash12(floor(p * uDpr));                  // granulation
+      float a = shape * fb;
+      vec3 washC = mix(col * .972, avg * (paper / uPaper), .2);  // wet paper: a shade darker, faintly tinted
+      col = mix(col, washC, max(wash, smoothstep(.15, .45, uReveal) * (1. - m) * .45) * a);   // damp paper ahead of the paint: never a bright hole
+      col = mix(col, ph, m * a);
+    }
+  }
+
+  if (uInkOn > .5) {
+    vec2 iq = (p - uInkRect.xy) / uInkRect.zw;
+    if (iq.x > 0. && iq.y > 0. && iq.x < 1. && iq.y < 1.) {
+      vec2 iuv = vec2(iq.x, 1. - iq.y);
+      float n = fbm4(p * .02 + 3.7);
+      float field = mix(iq.x, iq.y, uInkDir) * .62 + n * .55;
+      float front = mix(-.14, 1.32, uInk);
+      float inner = front - field;
+      float m = smoothstep(-.02, .06, inner);
+      float wet = 1. - smoothstep(0., .2, inner);
+      vec4 ink = texture2D(tInk, iuv); ink.a = pow(ink.a, uInkGamma);   // match the browser's text contrast so the hand-off is seamless
+      vec4 inkB = texture2D(tInk, iuv, 3.2);
+      col = mix(col, inkB.rgb, clamp(inkB.a * 1.6, 0., 1.) * m * wet * .38);   // the bleed halo
+      col = mix(col, ink.rgb * (1. - wet * m * .3), ink.a * m);
+    }
+  }
+
+  vec2 vq = (suv - .5) * vec2(uResPx.x / uResPx.y, 1.);
+  col *= 1. - uVig * smoothstep(.45, 1.1, length(vq));
+  col += (hash12(fc + floor(uTime * 24.) * vec2(37.1, 91.7)) - .5) * uGrain;
+  gl_FragColor = vec4(col, 1.);
+}`;
+
+/* petals: cupped, curled, fluttering 3D petals with per-instance DOF (signed-distance edge softening) */
+const PETAL_VERT = /* glsl */`
+attribute vec4 aSeed; attribute vec3 aColor; attribute float aSize; attribute float aKind;
+#ifdef GPGPU
+attribute vec2 aRef; uniform sampler2D tPos;
+#else
+attribute vec3 aPos; attribute float aFade;
+#endif
+uniform float uTime, uSettle, uD, uFocusZ, uCocK, uTumble, uProtect; uniform vec2 uC; uniform vec2 uShadowDir; uniform vec4 uInkBox;
+varying vec2 vUV; varying vec3 vN; varying vec3 vV; varying vec3 vCol; varying float vCoc, vPx, vKind, vFade, vW, vH;
+vec4 qAxis(vec3 a, float ang){ return vec4(normalize(a) * sin(ang * .5), cos(ang * .5)); }
+vec4 qMul(vec4 a, vec4 b){ return vec4(a.w*b.xyz + b.w*a.xyz + cross(a.xyz, b.xyz), a.w*b.w - dot(a.xyz, b.xyz)); }
+vec3 qRot(vec4 q, vec3 v){ return v + 2. * cross(q.xyz, cross(q.xyz, v) + q.w * v); }
+void main(){
+#ifdef GPGPU
+  vec3 P = texture2D(tPos, aRef).xyz; float fade = 1.;
+#else
+  vec3 P = aPos; float fade = aFade;
+#endif
+  float s = aSeed.x;
+  float u = position.x, v = position.y;
+  float W = aKind > .5 ? .42 : .7;
+  float flutter = sin(uTime * (2.0 + 2.2 * aSeed.y) + s * 40.) * .13;
+  float cup = aKind > .5 ? .12 + .1 * aSeed.z : .28 + .36 * aSeed.y;
+  float bend = (aSeed.z - .5) * .7 + flutter;
+  float hu = W * .5;
+  vec3 lp = vec3(u * hu, v - .45, cup * u * u * hu + bend * v * v * .5);
+  vec3 n = normalize(cross(vec3(hu, 0., 2. * cup * u * hu), vec3(0., 1., bend * v)));
+  lp *= aSize;
+  vec3 ax = normalize(aSeed.yzw - .5 + vec3(.001));
+  vec4 qT = qMul(qAxis(ax, uTime * uTumble * (.8 + 1.9 * aSeed.w) + s * 31.), qAxis(vec3(1., 0., 0.), s * 7.));
+  vec2 Ps = P.xy * uD / max(uD - P.z, 1.);
+  float ang = atan(Ps.y - uC.y, Ps.x - uC.x);
+  vec4 qS = qMul(qAxis(vec3(0., 0., 1.), ang + (aSeed.w > .5 ? .55 : -.55) + (aSeed.y - .5) * .5), qAxis(vec3(1., 0., 0.), .35 + aSeed.z * .5 + flutter));
+  vec4 q = normalize(mix(qT, dot(qT, qS) < 0. ? -qS : qS, uSettle));
+  vec3 off = qRot(q, lp);
+  vec3 wp = P + off;
+  float pxScale = uD / max(uD - P.z, 1.);
+  vPx = aSize * pxScale; vW = W;
+  if (uProtect > 0.) {                                   // never over the type while it inks in
+    vec2 bc = (uInkBox.xy + uInkBox.zw) * .5, bh = (uInkBox.zw - uInkBox.xy) * .5;
+    vec2 dd = abs(Ps - bc) - bh;
+    float sd = length(max(dd, 0.)) + min(max(dd.x, dd.y), 0.) - .2 * vPx;
+    fade *= 1. - uProtect * (1. - smoothstep(0., .4 * vPx, sd));
+  }
+  vCoc = min(abs(P.z - uFocusZ) * uCocK, .42 * vPx * hu);
+  vH = 0.;
+#ifdef SHADOW
+  float hgt = max(P.z, 0.);
+  wp = vec3(P.xy * pxScale + uShadowDir * hgt + off.xy, 0.);
+  vCoc = min(1.8 + hgt * .06, .6 * vPx * hu);
+  vH = hgt / uD;
+#endif
+  vUV = vec2(u, v); vN = qRot(q, n); vV = cameraPosition - wp; vCol = aColor; vKind = aKind; vFade = fade;
+  gl_Position = projectionMatrix * viewMatrix * vec4(wp, 1.);
+}`;
+const PETAL_FRAG = /* glsl */`
+uniform vec3 uL; uniform sampler2D tVein; uniform float uAlpha, uShAmt;
+varying vec2 vUV; varying vec3 vN; varying vec3 vV; varying vec3 vCol; varying float vCoc, vPx, vKind, vFade, vW, vH;
+void main(){
+  float u = vUV.x, v = vUV.y; float vc = clamp(v, 0., 1.);
+  float hw, top = 1.;
+  if (vKind > .5) hw = pow(sin(3.14159 * vc), .85) * .96;
+  else { hw = mix(.2, 1., smoothstep(0., .7, vc)) * sqrt(clamp(1. - pow(max(vc - .6, 0.) / .4, 2.), 0., 1.)); top = 1. - .06 * exp(-u * u * 36.); }
+  float hu = vW * .5;
+  float dpx = max((abs(u) - hw) * hu * vPx, max(v - top, -v) * vPx);
+  float aa = fwidth(dpx) * .8 + .001;
+  float c = vCoc + aa;
+  float alpha = 1. - smoothstep(-c, c, dpx);
+  if (alpha < .004) discard;
+  float blurN = clamp(vCoc / (.3 * vPx * hu + 1.), 0., 1.);
+#ifdef SHADOW
+  gl_FragColor = vec4(vec3(.45, .34, .27), alpha * mix(.085, .05, uShAmt) * (1. - smoothstep(0., .45, vH)) * vFade * uAlpha);
+  return;
+#endif
+  alpha *= mix(1., .55, blurN);
+  vec3 N = normalize(vN); vec3 V = normalize(vV);
+  if (dot(N, V) < 0.) N = -N;
+  float across = clamp(abs(u) / (hw + .001), 0., 1.);
+  vec3 base = vCol;
+  float vein = texture2D(tVein, vec2(sign(u) * across * .5 + .5, vc)).r;
+  if (vKind < .5) {
+    base = mix(min(base * 1.07 + vec3(.09, .08, .03), vec3(1.)), base, smoothstep(0., .42, vc));  // pale heel
+    base = mix(base, base * .86, smoothstep(.55, 1., across) * .45);                              // deeper rim
+    base *= 1. + (vein - .5) * .10;
+  } else {
+    float rib = 1. - smoothstep(.0, .06, abs(u));
+    base = mix(base, base * 1.25 + .05, rib * .5) * (1. + (vein - .5) * .12);
+  }
+  float ndl = dot(N, uL);
+  float facing = abs(dot(normalize(vN), V));
+  float wrap = clamp((ndl + .35) / 1.35, 0., 1.);
+  float ao = mix(.8, 1., smoothstep(0., .35, vc));
+  vec3 col = base * (.42 + .6 * wrap) * ao;
+  float back = clamp(-ndl, 0., 1.);
+  float lum = dot(base, vec3(.299, .587, .114));
+  col += (base * base * 1.3 + base * .16) * pow(back, 1.2) * (.6 + .5 * vein) * (1. - .55 * lum);   // translucency (sun behind)
+  float fres = pow(1. - clamp(dot(N, V), 0., 1.), 3.);
+  col += mix(base, vec3(1., .95, .9), .35) * fres * .16 * (.3 + wrap);                         // velvet sheen, tinted by the petal
+  col += pow(max(dot(reflect(-uL, N), V), 0.), 26.) * .05;
+  col += base * (1. - smoothstep(-4., 0., -abs(dpx + 1.5))) * back * .28;                      // sun-caught rim (blooms softly)
+  col = mix(col, base * .94, blurN * .5);
+  col = mix(base * .78, col, smoothstep(.0, .35, facing));                                     // edge-on: keep the petal's own colour
+  gl_FragColor = vec4(col, alpha * vFade * uAlpha);
+}`;
+
+/* GPGPU sim: curl-noise breeze → steering into a slowly turning wreath (portrait) or a floral frame
+   around the photograph's arch (landscape) → curtain gust */
+const VEL_FRAG = /* glsl */`
+uniform float uTime, uDt, uGather, uGust, uD, uWindSpd, uTurn, uBand, uRingDepth, uArc, uProtect, uPad;
+uniform vec2 uWindDir, uView, uC, uR; uniform vec4 uInkBox, uArchA; uniform vec2 uArchB;
+${SNOISE3}
+void main(){
+  vec2 uv = gl_FragCoord.xy / resolution.xy;
+  vec4 P4 = texture2D(tPos, uv), V4 = texture2D(tVel, uv);
+  vec3 p = P4.xyz; float zi = P4.w; vec3 v = V4.xyz; float s = V4.w;
+  float h1 = fract(s * 91.731), h2 = fract(s * 47.317), h3 = fract(s * 13.791);
+  float h4 = fract(sin(s * 61.17 + 3.1) * 43758.5453), h5 = fract(sin(s * 78.233 + 1.7) * 43758.5453);   // decorrelated from position along the frame
+  float L = length(uView);
+  vec3 cp = curlNoise(vec3(p.xy / L * 2.1, zi / uD * 1.4 + uTime * .1)) * .28;
+  vec3 wind = vec3(uWindDir * uWindSpd * (.8 + .4 * h1), 0.) + cp * uWindSpd * .5;
+  wind.z = (zi - p.z) * 1.2 + cp.z * uWindSpd * .06;
+  vec2 e, nrm, tng; float zt, keepFrac;
+  if (uArc < 0.) {
+    // floral frame around the arch: left jamb → up the shoulder → tip under the names | mirror on the right
+    float side = s < .5 ? -1. : 1.;
+    float u = s < .5 ? s * 2. : (1. - s) * 2.;                                // 0 = jamb end, 1 = tip at the crown
+    float R0 = uArchA.z, Ry = uArchB.x, Rm = sqrt((R0 * R0 + Ry * Ry) * .5), jamb = uArchA.y - uArchA.w, arc = Rm * 1.5707963;
+    float along = u * (jamb + arc) + sin(uTime * .6 + s * 17.) * 5.;
+    if (along < jamb) { e = vec2(uArchA.x + side * R0, uArchA.w + along); nrm = vec2(side, 0.); }
+    else { float a = min((along - jamb) / Rm, 1.5707963); e = uArchA.xy + vec2(side * R0 * cos(a), Ry * sin(a)); nrm = normalize(vec2(side * cos(a) / R0, sin(a) / Ry)); }
+    tng = vec2(-nrm.y, nrm.x) * side;
+    float taper = (.3 + .7 * smoothstep(0., .3, u)) * (1. - .72 * smoothstep(.5, 1., u));    // full at the shoulders, a fine line at the crown
+    e += nrm * (h1 * h1 * .9 + .1) * uBand * taper + tng * (h3 - .5) * uBand * .5;
+    e.y = min(e.y, uArchB.y);                                                  // never up into the names
+    zt = uD * (.02 + .05 * h2 + .07 * (1. - u) * h4);                          // lower jambs lean towards the lens
+    keepFrac = .7;
+  } else {
+    float ang, taper = 1.;
+    if (uArc > 6.) ang = s * 6.2831853 + uTime * uTurn;                      // closed oval wreath, slowly turning
+    else { float k = s - .5; taper = 1. - .9 * pow(abs(k) * 2., 1.5); ang = -1.5707963 + k * uArc + sin(uTime * .7 + s * 17.) * .025; }
+    nrm = vec2(cos(ang), sin(ang)); tng = vec2(-nrm.y, nrm.x);
+    e = uC + nrm * (uR + (h1 * h1 * .9 + .1) * uBand * taper);                 // band grows outward only: the names stay clear
+    zt = uD * (.025 + .06 * h2 + uRingDepth * (.5 - .5 * sin(ang)));
+    keepFrac = uArc > 6. ? 1.01 : .78;
+  }
+  vec3 target = vec3(e * (uD - zt) / uD, zt);
+  vec3 toT = target - p; float dist = length(toT);
+  vec3 seek = toT / (dist + .001) * min(dist * 2.3, uWindSpd * 2.3);
+  seek += vec3(tng, 0.) * (uArc > 6. ? uTurn * length(uR) * .8 : 0.) + cp * uWindSpd * .07;
+  float g = uGather * step(h5, keepFrac);                                      // the rest stays on the breeze
+  vec3 desired = mix(wind, seek, g);
+  // keep the type clear: slide every petal over/under (or around) the inked lines
+  vec2 ps = p.xy * uD / max(uD - p.z, 1.);
+  vec2 bc = (uInkBox.xy + uInkBox.zw) * .5, bh = (uInkBox.zw - uInkBox.xy) * .5, dq = ps - bc, dd = abs(dq) - bh;
+  float sd = length(max(dd, 0.)) + min(max(dd.x, dd.y), 0.);
+  vec2 gr = bh.x > bh.y ? vec2(0., sign(dq.y)) : vec2(sign(dq.x), 0.);      // slide over/under a line, round a column
+  if (dd.x > 0. && dd.y > 0.) gr = normalize(dd * sign(dq));
+  float rep = max(uGather, uProtect) * (1. - smoothstep(0., uPad * mix(1., .2, g), sd));   // gathered petals may sit close
+  desired.xy += gr * rep * uWindSpd * 1.7;
+  float side2 = (ps.x - uC.x) + (h2 - .5) * uR.x * .3 >= 0. ? 1. : -1.;      // the curtain parts left | right
+  vec3 gust = vec3(side2 * uWindSpd * (1.6 + 1.8 * h1), (h3 - .42) * uWindSpd * 1.05, (h4 - .3) * uD * .2) + cp * uWindSpd * .7;
+  desired = mix(desired, gust, uGust);
+  float k = mix(1.5, 6.2, g * (1. - uGust)) + uGust * 2.6;
+  k = max(k, 7. * rep * (1. - uGust));
+  v += (desired - v) * (1. - exp(-uDt * k));
+  gl_FragColor = vec4(v, s);
+}`;
+const POS_FRAG = /* glsl */`
+uniform float uDt;
+void main(){ vec2 uv = gl_FragCoord.xy / resolution.xy; vec4 P = texture2D(tPos, uv); P.xyz += texture2D(tVel, uv).xyz * uDt; gl_FragColor = P; }`;
+
+/* ─────────── boot ─────────── */
+async function main() {
+const canvas = document.getElementById('gl');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance', stencil: false, depth: false });
+  if (!renderer.capabilities.isWebGL2) throw new Error('WebGL2 required');
+} catch (e) { throw e; }
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+renderer.toneMapping = THREE.NoToneMapping;
+renderer.setClearColor(0xF4ECE1, 1);
+canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); de.classList.remove('glphoto'); canvas.classList.remove('on'); STD.reveal('context-lost'); finishDOM(); running = false; });
+
+const PAPER = hex(CFG.palette.paper);
+const fsGeo = new THREE.BufferGeometry();
+fsGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3));
+const orthoCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+function fsMesh(mat) { const m = new THREE.Mesh(fsGeo, mat); m.frustumCulled = false; return m; }
+
+/* load: photo texture + fonts */
+const photoTex = await new Promise(res => {
+  new THREE.TextureLoader().load(CFG.photo.src, t => res(t), undefined, () => res(null));
+});
+if (photoTex) {
+  photoTex.generateMipmaps = true; photoTex.minFilter = THREE.LinearMipmapLinearFilter; photoTex.magFilter = THREE.LinearFilter;
+  photoTex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+}
+await Promise.race([
+  Promise.all([
+    document.fonts.load('500 40px "Bodoni Moda"'), document.fonts.load('400 80px "Bodoni Moda"'), document.fonts.load('600 20px "Bodoni Moda"'),
+    document.fonts.load('400 40px "Pinyon Script"'), document.fonts.load('500 12px "Jost"'), document.fonts.load('italic 500 16px "Cormorant Garamond"'),
+  ]).then(() => document.fonts.ready), sleep(3000)]);
+await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+const doIntro = !STD.revealed && !SKIP && !STD.skipReq;
+STD.started = true;
+
+/* ─────────── layout measurement ─────────── */
+let W = innerWidth, H = innerHeight, D = 1, camera;
+const petalSize = () => Math.min(36, Math.max(20, Math.min(W, H) * .046));
+const L = {};
+function measure() {
+  W = innerWidth; H = innerHeight;
+  const arch = document.getElementById('arch').getBoundingClientRect();
+  L.photo = arch.width > 4 && arch.height > 4 ? arch : null;
+  L.landscape = isLandscape();
+  L.inkEls = L.landscape ? [document.getElementById('names')] : ['n1', 'date', 'n2'].map(id => document.getElementById(id));
+  const rs = L.inkEls.map(el => el.getBoundingClientRect());
+  const u = rs.reduce((a, r) => ({ l: Math.min(a.l, r.left), t: Math.min(a.t, r.top), r: Math.max(a.r, r.right), b: Math.max(a.b, r.bottom) }), { l: 1e9, t: 1e9, r: -1e9, b: -1e9 });
+  L.ink = u;
+  // wreath: the smallest ellipse that clears every glyph box (with a petal of air) and stays on screen
+  const a = (u.r - u.l) / 2, b = (u.b - u.t) / 2, petal = Math.max(18, Math.min(W, H) * .045);
+  const band = petalSize() * 1.2, cx = (u.l + u.r) / 2, cyBox = (u.t + u.b) / 2;
+  let Rx, Ry, cy = cyBox;
+  if (L.landscape) {                                    // open laurel garland cradling the names
+    Rx = Math.min(a + petal * 3, W / 2 - band - petal); Ry = b + petal * 1.5;
+  } else {
+    const m = petal * .5, edge = petal * .55 + band;
+    const corners = rs.flatMap(r => [[r.left, r.top], [r.right, r.top], [r.left, r.bottom], [r.right, r.bottom]]);
+    let best = null;
+    for (let rx = a + m * 1.6; rx <= W / 2 - petal - band; rx += 3) {
+      for (let off = -.4; off <= .401; off += .05) {
+        const c = cyBox + off * b;
+        let ry = 0;
+        for (const [x, y] of corners) {
+          const dx = Math.abs(x - cx) + m, dy = Math.abs(y - c) + m * .4;
+          if (dx >= rx * .985) { ry = Infinity; break; }
+          ry = Math.max(ry, dy / Math.sqrt(1 - (dx / rx) ** 2));
+        }
+        if (c - ry - edge < petal * .4 || c + ry + edge > H - petal * .4) continue;
+        if (!best || rx + ry < best[0] + best[1]) best = [rx, ry, c];
+      }
+    }
+    if (best) [Rx, Ry, cy] = best;
+    else { Rx = W / 2 - petal * .7 - band * .6; Ry = Math.min(b * 1.5 + petal, cyBox - edge, H - cyBox - edge); }
+  }
+  L.wc = new THREE.Vector2(cx - W / 2, H / 2 - cy);
+  L.wr = new THREE.Vector2(Rx, Ry);
+  L.inkBox = new THREE.Vector4(u.l - W / 2, H / 2 - u.b, u.r - W / 2, H / 2 - u.t);   // world: x right, y up
+  L.archMode = L.landscape && !!L.photo;
+  if (L.archMode) {                                     // floral frame around the photograph's arch, at the visual centre
+    const p = L.photo, r = p.width / 2, ax = p.left + r - W / 2, yT = H / 2 - p.top, cyc = yT - r;
+    const R0 = r + 8 + petal * .5, yEnd = yT - p.height * .6;
+    const limitY = L.inkBox.y - petal * .55;            // the crown runs just under the names (their box has air below the baseline)
+    L.archBand = petalSize() * 1.7;
+    const Ry = Math.max(r * .8, Math.min(R0, limitY - cyc - L.archBand * .26));   // a touch elliptical only if the names sit close
+    L.arch = new THREE.Vector4(ax, cyc, R0, yEnd);
+    L.archB = new THREE.Vector2(Ry, limitY);
+    L.wc.set(ax, cyc); L.wr.set(R0, R0);
+  }
+  // type rects (css px, top-left) — the leaf shadows never sit behind them
+  L.txt = [...document.querySelectorAll(L.landscape ? '.eyebrow,#names,#date,.when,.place,.rule,.foot' : '.eyebrow,.n1,#date,.n2,.when,.place,.rule,.foot')]
+    .map(el => el.getBoundingClientRect()).filter(r => r.width > 0).slice(0, 9);
+  // text keep-out zones for ambient petals
+  L.keep = [...document.querySelectorAll('.eyebrow,.n1,.n2,.amp,#date,.when,.place,.foot,.rule')]
+    .map(el => el.getBoundingClientRect()).filter(r => r.width > 0)
+    .map(r => ({ l: r.left - W / 2 - 14, r: r.right - W / 2 + 14, t: H / 2 - r.top + 12, b: H / 2 - r.bottom - 12 }));
+  if (!L.landscape && L.photo) {                        // portrait: the print fills the width — petals never drift over it
+    const p = L.photo; L.keep.push({ l: p.left - W / 2 + 6, r: p.right - W / 2 - 6, t: H / 2 - p.top - 6, b: H / 2 - p.bottom + 6 });
+  }
+}
+measure();
+
+/* ─────────── renderer + camera ─────────── */
+let dpr = doIntro ? DPR_INTRO : DPR_AMB;
+renderer.setPixelRatio(dpr); renderer.setSize(W, H, false);
+camera = new THREE.PerspectiveCamera(30, W / H, 1, 20000);
+function placeCamera() {
+  D = (H / 2) / Math.tan(THREE.MathUtils.degToRad(15));
+  camera.aspect = W / H; camera.position.set(0, 0, D); camera.near = 10; camera.far = D * 3; camera.lookAt(0, 0, 0); camera.updateProjectionMatrix();
+}
+placeCamera();
+
+/* paper (static) + dapple (animated, low-res) */
+const paperRT = new THREE.WebGLRenderTarget(4, 4, { depthBuffer: false });
+const paperMat = new THREE.ShaderMaterial({ vertexShader: FS_VERT, fragmentShader: PAPER_FRAG, uniforms: { uResPx: { value: new THREE.Vector2() }, uDpr: { value: 1 }, uPaper: { value: PAPER } }, depthTest: false, depthWrite: false });
+const paperScene = new THREE.Scene(); paperScene.add(fsMesh(paperMat));
+const dappleRT = new THREE.WebGLRenderTarget(4, 4, { depthBuffer: false, type: THREE.UnsignedByteType });
+const dappleMat = new THREE.ShaderMaterial({ vertexShader: FS_VERT, fragmentShader: DAPPLE_FRAG, depthTest: false, depthWrite: false,
+  uniforms: { uSize: { value: new THREE.Vector2() }, uScale: { value: 3 }, uTime: { value: 0 }, uUnit: { value: 800 },
+    uTxt: { value: Array.from({ length: 9 }, () => new THREE.Vector4()) }, uMask: { value: 1 }, uFall: { value: 120 } } });
+const dappleScene = new THREE.Scene(); dappleScene.add(fsMesh(dappleMat));
+function bakePaper() {
+  const pr = DPR_AMB, w = Math.ceil(W * pr), h = Math.ceil(H * pr);
+  paperRT.setSize(w, h);
+  paperMat.uniforms.uResPx.value.set(w, h); paperMat.uniforms.uDpr.value = pr;
+  renderer.setRenderTarget(paperRT); renderer.render(paperScene, orthoCam); renderer.setRenderTarget(null);
+  const dw = Math.max(8, Math.ceil(W / 3)), dh = Math.max(8, Math.ceil(H / 3)), DU = dappleMat.uniforms;
+  dappleRT.setSize(dw, dh); DU.uSize.value.set(dw, dh); DU.uScale.value = W / dw; DU.uUnit.value = Math.min(W, H);
+  DU.uFall.value = Math.max(40, Math.min(120, Math.min(W, H) * .12));
+  DU.uTxt.value.forEach((v, i) => { const r = L.txt[i]; if (r) v.set(r.left - 6, r.top - 6, r.right + 6, r.bottom + 6); else v.set(0, 0, 0, 0); });
+}
+function renderDapple(t) {
+  dappleMat.uniforms.uTime.value = t;
+  renderer.setRenderTarget(dappleRT); renderer.render(dappleScene, orthoCam); renderer.setRenderTarget(null);
+}
+bakePaper();
+
+/* ink texture: the names, drawn glyph-by-glyph at their exact laid-out positions */
+const blankTex = new THREE.DataTexture(new Uint8Array([0, 0, 0, 0]), 1, 1); blankTex.needsUpdate = true;
+let inkTex = null;
+function buildInk() {
+  const pad = 26, pr = Math.min(devicePixelRatio || 1, 2);
+  const u = L.ink, x0 = Math.floor((u.l - pad) * pr) / pr, y0 = Math.floor((u.t - pad) * pr) / pr;   // texel grid = device-pixel grid
+  const cv = document.createElement('canvas'); cv.width = Math.ceil((u.r + pad - x0) * pr); cv.height = Math.ceil((u.b + pad - y0) * pr);
+  const w = cv.width / pr, h = cv.height / pr;
+  const ctx = cv.getContext('2d'); ctx.scale(pr, pr); ctx.translate(-x0, -y0);
+  ctx.textBaseline = 'alphabetic';
+  const range = document.createRange();
+  for (const el of L.inkEls) {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      const parent = node.parentElement, cs = getComputedStyle(parent);
+      if (cs.display === 'none' || parent.closest('.sr')) continue;
+      const fs = parseFloat(cs.fontSize), om = /"opsz"\s+([\d.]+)/.exec(cs.fontVariationSettings || ''), drawFs = om ? parseFloat(om[1]) : fs, k = fs / drawFs;
+      ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${drawFs}px ${cs.fontFamily}`;   // canvas uses auto optical sizing: draw at the pinned opsz, scale up
+      ctx.fillStyle = cs.color;
+      const asc = ctx.measureText('H').fontBoundingBoxAscent * k;
+      const txt = node.textContent, upper = cs.textTransform === 'uppercase';
+      for (let i = 0; i < txt.length; i++) {
+        const ch = txt[i]; if (/\s/.test(ch)) continue;
+        range.setStart(node, i); range.setEnd(node, i + 1);
+        const r = range.getClientRects()[0]; if (!r || r.width === 0) continue;
+        ctx.save(); ctx.translate(r.left, r.top + asc); ctx.scale(k, k); ctx.fillText(upper ? ch.toUpperCase() : ch, 0, 0); ctx.restore();
+      }
+    }
+  }
+  inkTex = new THREE.CanvasTexture(cv);
+  inkTex.generateMipmaps = true; inkTex.minFilter = THREE.LinearMipmapLinearFilter; inkTex.magFilter = THREE.LinearFilter;
+  comp.uniforms.tInk.value = inkTex;
+  comp.uniforms.uInkRect.value.set(x0, y0, w, h);
+  comp.uniforms.uInkDir.value = L.landscape ? 0 : .55;
+}
+
+const comp = new THREE.ShaderMaterial({
+  vertexShader: FS_VERT, fragmentShader: COMP_FRAG, depthTest: false, depthWrite: false,
+  uniforms: {
+    tPaper: { value: paperRT.texture }, tDapple: { value: dappleRT.texture }, tPhoto: { value: photoTex || blankTex }, tInk: { value: blankTex },
+    uResPx: { value: new THREE.Vector2() }, uDpr: { value: dpr }, uTime: { value: 0 }, uDap: { value: .045 }, uGrain: { value: .026 }, uVig: { value: .035 }, uPaper: { value: PAPER },
+    uPhotoRect: { value: new THREE.Vector4() }, uImg: { value: new THREE.Vector2(CFG.photo.w, CFG.photo.h) },
+    uCrop: { value: new THREE.Vector3(CFG.photo.focus[0], CFG.photo.focus[1], CFG.photo.zoom) },
+    uReveal: { value: 0 }, uFadeFrac: { value: 0 }, uPhotoOn: { value: photoTex ? 1 : 0 },
+    uPtr: { value: new THREE.Vector3(-999, -999, 0) }, uBreeze: { value: 0 },
+    uInkRect: { value: new THREE.Vector4() }, uInk: { value: 0 }, uInkOn: { value: 0 }, uInkDir: { value: 0 }, uInkGamma: { value: (devicePixelRatio || 1) < 1.5 ? 2.1 : 1.6 },
+  }
+});
+function syncLayoutUniforms() {
+  const pr = renderer.getPixelRatio();
+  comp.uniforms.uResPx.value.set(Math.round(W * pr), Math.round(H * pr)); comp.uniforms.uDpr.value = pr;
+  if (L.photo) comp.uniforms.uPhotoRect.value.set(L.photo.left, L.photo.top, L.photo.width, L.photo.height);
+  comp.uniforms.uPhotoOn.value = photoTex && L.photo ? 1 : 0;
+  comp.uniforms.uFadeFrac.value = L.landscape ? .36 : 0;
+  const z = parseFloat(getComputedStyle(document.getElementById('photo')).getPropertyValue('--zoom')) || CFG.photo.zoom;
+  comp.uniforms.uCrop.value.z = z;
+}
+syncLayoutUniforms();
+
+const scene = new THREE.Scene();
+const bg = fsMesh(comp); bg.renderOrder = -10; scene.add(bg);
+
+/* petal assets */
+function veinTexture() {
+  const cv = document.createElement('canvas'); cv.width = 128; cv.height = 256;
+  const g = cv.getContext('2d'); g.fillStyle = '#808080'; g.fillRect(0, 0, 128, 256);
+  const rnd = mulberry(7);
+  g.globalCompositeOperation = 'source-over';
+  for (let i = 0; i < 46; i++) {
+    const tx = rnd() * 128, k = (tx - 64) / 64;
+    g.strokeStyle = `rgba(255,255,255,${.10 + rnd() * .16})`; g.lineWidth = .6 + rnd() * 1.1;
+    g.beginPath(); g.moveTo(64 + k * 6, 256); g.quadraticCurveTo(64 + k * 40 + (rnd() - .5) * 18, 150, tx, -4); g.stroke();
+  }
+  const out = document.createElement('canvas'); out.width = 128; out.height = 256;
+  const o = out.getContext('2d'); o.filter = 'blur(1.2px)'; o.drawImage(cv, 0, 0);
+  const t = new THREE.CanvasTexture(out); t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; return t;
+}
+const veinTex = veinTexture();
+function petalBaseGeometry() {
+  const segU = 10, segV = 12, pos = [], idx = [];
+  for (let j = 0; j <= segV; j++) for (let i = 0; i <= segU; i++) pos.push(-1.45 + 2.9 * i / segU, -.24 + 1.48 * j / segV, 0);
+  for (let j = 0; j < segV; j++) for (let i = 0; i < segU; i++) { const a = j * (segU + 1) + i, b = a + 1, c = a + segU + 1, d = c + 1; idx.push(a, b, d, a, d, c); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); return g;
+}
+const baseGeo = petalBaseGeometry();
+const PALETTE = [ // colour, weight, kind
+  ['#C8697F', .28, 0], ['#DC98A0', .22, 0], ['#E5B1B1', .08, 0], ['#DE7849', .13, 0], ['#E4906B', .10, 0], ['#EFD3C6', .07, 0], ['#748A4E', .07, 1], ['#5E7343', .05, 1],
+];
+function pickColour(r) { let acc = 0; for (const p of PALETTE) { acc += p[1]; if (r <= acc) return p; } return PALETTE[0]; }
+const L_DIR = new THREE.Vector3(-.55, .62, .56).normalize();
+
+function makePetalMaterial(defines, extra = {}) {
+  return new THREE.ShaderMaterial({
+    vertexShader: PETAL_VERT, fragmentShader: PETAL_FRAG, defines, transparent: true, depthTest: false, depthWrite: false, side: THREE.DoubleSide,
+    uniforms: Object.assign({
+      uTime: { value: 0 }, uSettle: { value: 0 }, uD: { value: D }, uFocusZ: { value: D * .05 }, uCocK: { value: 30 / D }, uTumble: { value: 1 },
+      uC: { value: L.wc }, uShadowDir: { value: new THREE.Vector2(.11, -.14) }, uL: { value: L_DIR }, tVein: { value: veinTex }, uAlpha: { value: 1 },
+      uProtect: { value: 0 }, uInkBox: { value: L.inkBox }, uShAmt: { value: 0 },
+    }, extra),
+  });
+}
+function instanceGeometry(n, rnd, zFn) {
+  const g = new THREE.InstancedBufferGeometry();
+  g.index = baseGeo.index; g.setAttribute('position', baseGeo.attributes.position);
+  const seed = new Float32Array(n * 4), col = new Float32Array(n * 3), size = new Float32Array(n), kind = new Float32Array(n);
+  const base = petalSize();
+  for (let i = 0; i < n; i++) {
+    seed.set([rnd(), rnd(), rnd(), rnd()], i * 4);
+    const p = pickColour(rnd()); const c = hex(p[0]); const j = 1 + (rnd() - .5) * .08;
+    col.set([Math.min(1, c.x * j), Math.min(1, c.y * j), Math.min(1, c.z * j)], i * 3);
+    kind[i] = p[2]; size[i] = base * (.78 + rnd() * .5) * (p[2] ? 1.3 : 1);
+  }
+  g.setAttribute('aSeed', new THREE.InstancedBufferAttribute(seed, 4));
+  g.setAttribute('aColor', new THREE.InstancedBufferAttribute(col, 3));
+  g.setAttribute('aSize', new THREE.InstancedBufferAttribute(size, 1));
+  g.setAttribute('aKind', new THREE.InstancedBufferAttribute(kind, 1));
+  g.instanceCount = n; return g;
+}
+
+/* ─────────── intro system (GPGPU) ─────────── */
+let intro = null;
+function buildIntro() {
+  const N = SIM * SIM, rnd = mulberry(20270320);
+  const gpu = new GPUComputationRenderer(SIM, SIM, renderer);
+  if (!renderer.extensions.has('EXT_color_buffer_float')) gpu.setDataType(THREE.HalfFloatType);
+  const p0 = gpu.createTexture(), v0 = gpu.createTexture();
+  const diag = Math.hypot(W, H), windSpd = diag * .45;
+  const wa = L.landscape ? .1 : -.36, wd = new THREE.Vector2(Math.cos(wa), Math.sin(wa));
+  const zs = [];
+  for (let i = 0; i < N; i++) zs.push(D * (.012 + .6 * Math.pow((i + rnd()) / N, 2.3)));  // sorted far → near (painter's order)
+  for (let i = 0; i < N; i++) {
+    const zi = zs[i];
+    const sx = L.wc.x + (rnd() - .5) * Math.min(W, L.wr.x * 2.6), sy = THREE.MathUtils.lerp((rnd() - .5) * H * .95, L.wc.y, .3);
+    const up = diag * (.3 + .9 * rnd());
+    const px = sx - wd.x * up + (rnd() - .5) * 40, py = sy - wd.y * up;
+    const k = (D - zi) / D;
+    p0.image.data.set([px * k, py * k, zi, zi], i * 4);
+    const sp = windSpd * (.8 + .4 * rnd());
+    v0.image.data.set([wd.x * sp, wd.y * sp, 0, rnd()], i * 4);
+  }
+  const velVar = gpu.addVariable('tVel', VEL_FRAG, v0);
+  const posVar = gpu.addVariable('tPos', POS_FRAG, p0);
+  gpu.setVariableDependencies(velVar, [posVar, velVar]);
+  gpu.setVariableDependencies(posVar, [posVar, velVar]);
+  Object.assign(velVar.material.uniforms, {
+    uTime: { value: 0 }, uDt: { value: 1 / 60 }, uGather: { value: 0 }, uGust: { value: 0 }, uD: { value: D }, uWindSpd: { value: windSpd }, uTurn: { value: .11 },
+    uWindDir: { value: wd }, uView: { value: new THREE.Vector2(W, H) }, uC: { value: L.wc }, uR: { value: L.wr },
+    uBand: { value: L.archMode ? L.archBand : petalSize() * (L.landscape ? 1.25 : 1.15) }, uRingDepth: { value: L.landscape ? .14 : .10 },
+    uArc: { value: L.archMode ? -1 : L.landscape ? 3.55 : 7 },
+    uProtect: { value: 0 }, uPad: { value: petalSize() * 2.2 }, uInkBox: { value: L.inkBox },
+    uArchA: { value: L.arch || new THREE.Vector4() }, uArchB: { value: L.archB || new THREE.Vector2(1, 1e5) },
+  });
+  posVar.material.uniforms.uDt = { value: 1 / 60 };
+  const err = gpu.init(); if (err) throw new Error(err);
+
+  const geo = instanceGeometry(N, rnd);
+  const ref = new Float32Array(N * 2);
+  for (let i = 0; i < N; i++) ref.set([((i % SIM) + .5) / SIM, (Math.floor(i / SIM) + .5) / SIM], i * 2);
+  geo.setAttribute('aRef', new THREE.InstancedBufferAttribute(ref, 2));
+  const mat = makePetalMaterial({ GPGPU: '' }, { tPos: { value: null } });
+  const shMat = makePetalMaterial({ GPGPU: '', SHADOW: '' }, { tPos: { value: null } });
+  const mesh = new THREE.Mesh(geo, mat); mesh.frustumCulled = false; mesh.renderOrder = 2;
+  const shadow = new THREE.Mesh(geo, shMat); shadow.frustumCulled = false; shadow.renderOrder = 1;
+  scene.add(shadow, mesh);
+
+  const composer = new EffectComposer(renderer);
+  composer.setPixelRatio(dpr); composer.setSize(W, H);
+  composer.addPass(new RenderPass(scene, camera));
+  let bloom = null;
+  if (TIER !== 'low') { bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), .5, .55, 1.0); bloom.threshold = 1.0; composer.addPass(bloom); }
+  composer.addPass(new ShaderPass({ uniforms: { tDiffuse: { value: null } }, vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }', fragmentShader: 'uniform sampler2D tDiffuse; varying vec2 vUv; void main(){ gl_FragColor = vec4(clamp(texture2D(tDiffuse, vUv).rgb, 0., 1.), 1.); }' }));
+
+  let simT = 0;
+  function step() {
+    const t = simT, U = velVar.material.uniforms;
+    U.uTime.value = t;
+    U.uGather.value = inOut(seg(t, ...TL.gather));
+    U.uGust.value = sstep(...TL.gust, t);
+    U.uProtect.value = sstep(...TL.protect, t);
+    gpu.compute(); simT += 1 / 60;
+  }
+  function sync(t) {
+    const tex = gpu.getCurrentRenderTarget(posVar).texture;
+    for (const m of [mat, shMat]) {
+      m.uniforms.tPos.value = tex; m.uniforms.uTime.value = t;
+      m.uniforms.uSettle.value = sstep(...TL.settle, t) * (1 - sstep(3.25, 3.6, t));
+      m.uniforms.uProtect.value = sstep(...TL.protect, t);
+      m.uniforms.uShAmt.value = sstep(...TL.settle, t);
+    }
+    if (bloom) bloom.strength = .38 * sstep(.2, .9, t) * (1 - sstep(4.3, 5.3, t));
+  }
+  function dispose() {
+    scene.remove(mesh, shadow); geo.dispose(); mat.dispose(); shMat.dispose();
+    for (const v of gpu.variables) { v.renderTargets.forEach(rt => rt.dispose()); v.material.dispose(); }
+    gpu.dispose?.(); composer.renderTarget1.dispose(); composer.renderTarget2.dispose(); bloom?.dispose();
+  }
+  return { step, sync, dispose, composer, mat, shMat, get simT() { return simT; } };
+}
+
+/* ─────────── ambient system (CPU, cheap) ─────────── */
+let amb = null;
+function buildAmbient(startT) {
+  const n = AMB_COUNT, rnd = mulberry(314);
+  const zf = i => (W < 600 || i < n - 3) ? D * (.02 + .1 * rnd()) : D * (.24 + .2 * rnd());   // phones: only far, sharp petals
+  const geo = instanceGeometry(n, rnd);
+  if (W < 600) geo.attributes.aSize.array.forEach((v, i, arr) => { arr[i] = v * 1.2; });
+  const pos = new Float32Array(n * 3), fade = new Float32Array(n);
+  const pA = new THREE.InstancedBufferAttribute(pos, 3), fA = new THREE.InstancedBufferAttribute(fade, 1);
+  pA.setUsage(THREE.DynamicDrawUsage); fA.setUsage(THREE.DynamicDrawUsage);
+  geo.setAttribute('aPos', pA); geo.setAttribute('aFade', fA);
+  const ps = [];
+  const spawnY = () => {                                       // portrait: drift through the type band, beside the lines
+    if (L.landscape || !L.photo || rnd() < .2) return (rnd() - .35) * H;
+    const top = H / 2 - L.photo.bottom - 10, bot = -H / 2 + 30; return bot + rnd() * Math.max(0, top - bot);
+  };
+  for (let i = 0; i < n; i++) ps.push({ z: zf(i), x: (rnd() - .62) * W, y: spawnY(), vx: W * (.022 + .02 * rnd()) + 6, vy: -H * (.004 + .01 * rnd()), ph: rnd() * 6.28, born: rnd() * 1.5, a: 0 });
+  ps.sort((a, b) => a.z - b.z);
+  const mat = makePetalMaterial({}, {}); mat.uniforms.uTumble.value = .32;
+  const shMat = makePetalMaterial({ SHADOW: '' }, {}); shMat.uniforms.uTumble.value = .32;
+  const mesh = new THREE.Mesh(geo, mat); mesh.frustumCulled = false; mesh.renderOrder = 2;
+  const shadow = new THREE.Mesh(geo, shMat); shadow.frustumCulled = false; shadow.renderOrder = 1;
+  scene.add(shadow, mesh);
+  const sdRect = (x, y, k) => { const dx = Math.max(k.l - x, 0, x - k.r), dy = Math.max(k.b - y, 0, y - k.t); const inside = x > k.l && x < k.r && y > k.b && y < k.t; return inside ? -Math.min(x - k.l, k.r - x, k.t - y, y - k.b) : Math.hypot(dx, dy); };
+  let last = startT;
+  function update(t) {
+    const dt = Math.min(.1, Math.max(0, t - last)); last = t;
+    const base = petalSize() * (W < 600 ? 1.2 : 1);
+    ps.forEach((p, i) => {
+      p.x += (p.vx + Math.sin(t * .55 + p.ph) * 10) * dt;
+      p.y += (p.vy + Math.cos(t * .42 + p.ph * 1.3) * 7) * dt;
+      const mag = D / (D - p.z), mx = W / 2 + base * mag * .9 + 10;
+      if (p.x > mx || p.y < -H / 2 - base * mag) { p.x = -mx - rnd() * W * .15; p.y = spawnY(); p.a = 0; p.born = t; }
+      const rad = base * mag * .55 + Math.abs(p.z - D * .05) * 30 / D;
+      let d = 1e9; for (const k of L.keep) d = Math.min(d, sdRect(p.x, p.y, k));
+      const target = clamp01((d - rad) / 46) * clamp01((t - p.born) / 1.6);
+      p.a += (target - p.a) * Math.min(1, dt * 4);
+      const k = (D - p.z) / D;
+      pos[i * 3] = p.x * k; pos[i * 3 + 1] = p.y * k; pos[i * 3 + 2] = p.z; fade[i] = p.a;
+    });
+    pA.needsUpdate = true; fA.needsUpdate = true;
+    mat.uniforms.uTime.value = t; shMat.uniforms.uTime.value = t;
+  }
+  function relayout() { for (const m of [mat, shMat]) { m.uniforms.uD.value = D; m.uniforms.uFocusZ.value = D * .05; m.uniforms.uCocK.value = 30 / D; } }
+  return { update, relayout, ps };
+}
+
+/* ─────────── DOM choreography (pure function of t → deterministic for ?t=) ─────────── */
+const domEls = DOM_TL.map(([sel, s, d, mode]) => ({ els: [...document.querySelectorAll(sel)], s, d, mode }));
+const namesEls = L.landscape ? ['n1', 'n2'].map(id => document.getElementById(id)) : ['n1', 'date', 'n2'].map(id => document.getElementById(id));
+let skipAt = null;
+function applyDOM(t, sinceSkip) {
+  for (const it of domEls) {
+    if (!L.landscape && it.els[0]?.id === 'date') continue;
+    let e = outCubic(seg(t, it.s, it.s + it.d));
+    if (sinceSkip != null) e = Math.max(e, outCubic(seg(sinceSkip, 0, .55)));
+    for (const el of it.els) {
+      el.style.opacity = e.toFixed(3);
+      if (it.mode !== 'fade') { el.style.transform = e < 1 ? `translate3d(0,${((1 - e) * 10).toFixed(2)}px,0)` : ''; el.style.filter = e < 1 ? `blur(${((1 - e) * 5).toFixed(2)}px)` : ''; }
+    }
+  }
+  let n = sstep(...TL.namesHTML, t);
+  if (sinceSkip != null) n = Math.max(n, seg(sinceSkip, 0, .4));
+  for (const el of namesEls) el.style.opacity = n.toFixed(3);
+}
+function finishDOM() {
+  document.querySelectorAll('.rv').forEach(el => { el.style.opacity = ''; el.style.transform = ''; el.style.filter = ''; });
+  de.classList.add('done');
+}
+
+/* ─────────── pointer (wind ripple on the photograph) ─────────── */
+const ptr = { x: -999, y: -999, s: 0, target: 0, lastMove: 0 };
+addEventListener('pointermove', e => { ptr.x = e.clientX; ptr.y = e.clientY; ptr.lastMove = performance.now(); ptr.target = 1; }, { passive: true });
+addEventListener('pointerdown', e => { ptr.x = e.clientX; ptr.y = e.clientY; ptr.lastMove = performance.now(); ptr.target = 1; }, { passive: true });
+
+/* ─────────── skip ─────────── */
+const skipBtn = document.getElementById('skip');
+function requestSkip() { if (mode === 'intro' && skipAt == null && T_FREEZE == null) skipAt = performance.now(); }
+skipBtn.addEventListener('click', e => { e.stopPropagation(); requestSkip(); });
+addEventListener('pointerdown', e => { if (mode === 'intro' && !e.target.closest('a')) requestSkip(); });
+addEventListener('keydown', e => { if (mode === 'intro' && (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) { if (e.key === ' ') e.preventDefault(); requestSkip(); } });
+
+/* ─────────── main loop ─────────── */
+let mode = 'intro', running = true, ambT0 = 0, pendingRelayout = false;
+function toAmbient(now) {
+  if (intro) { intro.dispose(); intro = null; }
+  inkTex?.dispose(); inkTex = null; comp.uniforms.tInk.value = blankTex; comp.uniforms.uInkOn.value = 0;
+  comp.uniforms.uReveal.value = 1; comp.uniforms.uDap.value = .015; comp.uniforms.uBreeze.value = 1; dappleMat.uniforms.uMask.value = 1;
+  skipBtn.classList.remove('on'); skipBtn.setAttribute('tabindex', '-1');
+  finishDOM();
+  if (dpr !== DPR_AMB) { dpr = DPR_AMB; renderer.setPixelRatio(dpr); renderer.setSize(W, H, false); syncLayoutUniforms(); }
+  mode = 'ambient';
+  ambT0 = now;
+  amb = buildAmbient(0);
+  if (pendingRelayout) { pendingRelayout = false; relayout(); }
+  STD.metrics();
+}
+
+function frameIntro(now) {
+  let t;
+  if (T_FREEZE != null) t = T_FREEZE;
+  else {
+    const target = (now - introStart) / 1000;
+    let steps = 0;
+    while (intro.simT < target && steps < 6) { intro.step(); steps++; }
+    if (intro.simT < target - .25) introStart += (target - intro.simT) * 1000; // never spiral: slow the clock instead of skipping beats
+    t = intro.simT;
+  }
+  const since = skipAt != null ? (now - skipAt) / 1000 : null;
+  const U = comp.uniforms;
+  U.uTime.value = t;
+  U.uDap.value = .045 - .03 * sstep(2.6, 4.6, t);
+  dappleMat.uniforms.uMask.value = sstep(1.5, 2.3, t);
+  U.uInk.value = Math.max(outCubic(seg(t, ...TL.ink)), since != null ? seg(since, 0, .35) : 0);
+  U.uInkOn.value = t < TL.inkOff && (since == null || since < .45) ? 1 : 0;
+  U.uReveal.value = Math.max(inOut(seg(t, ...TL.reveal)), since != null ? inOut(seg(since, 0, .8)) : 0);
+  U.uBreeze.value = sstep(4.6, 5.6, t);
+  intro.sync(t);
+  const pa = since != null ? 1 - sstep(0, .6, since) : 1;
+  intro.mat.uniforms.uAlpha.value = pa; intro.shMat.uniforms.uAlpha.value = pa;
+  renderDapple(dappleTime(t));
+  applyDOM(t, since);
+  const skOn = t > .25 && t < 3.3 && since == null && T_FREEZE == null;
+  if (skOn !== skipBtn.classList.contains('on')) { skipBtn.classList.toggle('on', skOn); skipBtn.tabIndex = skOn ? 0 : -1; }
+  intro.composer.render();
+  if (T_FREEZE == null && (t >= TL.end || (since != null && since > .85))) toAmbient(now);
+}
+
+let lastAmb = 0;
+function frameAmbient(now) {
+  const idle = now - ptr.lastMove > 1000 && ptr.s < .02;
+  if (now - lastAmb < (idle ? 1000 / 24 : 1000 / 30) - 2) return;   // the card is calm: 30fps, 24fps (grain cadence) when idle
+  lastAmb = now;
+  const t = T_FREEZE != null ? Math.max(0, T_FREEZE - TL.end) + (now - ambT0) * 0 : (now - ambT0) / 1000;
+  const tt = TL.end + t;
+  ptr.target = now - ptr.lastMove < 900 ? 1 : 0;
+  ptr.s += (ptr.target - ptr.s) * .06;
+  const U = comp.uniforms;
+  U.uTime.value = tt; U.uPtr.value.set(ptr.x, ptr.y, ptr.s);
+  renderDapple(dappleTime(tt));
+  amb.update(t);
+  renderer.render(scene, camera);
+}
+
+let introStart = 0, frozenFrames = 0;
+const dappleTime = t => t < TL.end ? t : TL.end + (t - TL.end) * .6;
+function loop(now) {
+  if (!running) return;
+  if (mode === 'intro') frameIntro(now); else frameAmbient(now);
+  if (T_FREEZE != null && ++frozenFrames > 3) { de.dataset.frozen = '1'; return; }   // ?t= : a still frame — stop drawing
+  requestAnimationFrame(loop);
+}
+
+/* visibility: pause everything when hidden */
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { running = false; }
+  else if (!running) { running = true; const n = performance.now(); if (mode === 'intro') introStart = n - intro.simT * 1000; lastAmb = 0; requestAnimationFrame(loop); }
+});
+let pauseT = 0;
+document.addEventListener('visibilitychange', () => { if (document.hidden) pauseT = performance.now(); else if (mode === 'ambient') ambT0 += performance.now() - pauseT; });
+
+/* resize: finish the intro immediately, then re-measure */
+let rzT = 0;
+function relayout() { measure(); placeCamera(); renderer.setSize(W, H, false); bakePaper(); syncLayoutUniforms(); amb?.relayout(); STD.metrics(); }
+addEventListener('resize', () => {
+  clearTimeout(rzT);
+  rzT = setTimeout(() => {
+    if (mode === 'intro') {
+      // a mobile toolbar settling (same width, small height change) must not cancel the intro: the card is svh-based and doesn't move
+      if (Math.abs(innerWidth - W) < 2 && Math.abs(innerHeight - H) < 140) { pendingRelayout = true; return; }
+      toAmbient(performance.now());
+    }
+    relayout();
+  }, 120);
+});
+
+if (Q.has('debug')) window.__fl = { L, get amb() { return amb; }, get D() { return D; }, TIER };
+/* ─────────── go ─────────── */
+
+de.classList.add('gl');
+if (photoTex && L.photo && doIntro) de.classList.add('glphoto');
+try {
+  if (doIntro) {
+    buildInk();
+    intro = buildIntro();
+    if (T_FREEZE != null) { while (intro.simT < Math.min(T_FREEZE, TL.end) - 1e-6) intro.step(); }
+    if (T_FREEZE != null && T_FREEZE >= TL.end) { toAmbient(performance.now()); }
+    introStart = performance.now();
+  } else {
+    toAmbient(performance.now());
+  }
+} catch (e) {
+  console.warn('[std] intro unavailable:', e.message);
+  intro = null; toAmbient(performance.now());
+}
+// first frame, then fade the GL layer in over the identical CSS paper
+requestAnimationFrame(now => {
+  loop(now); canvas.classList.add('on'); STD.metrics();
+  if (photoTex && L.photo && !doIntro) setTimeout(() => de.classList.add('glphoto'), 760); // GL photo is pixel-matched: swap after the fade
+});
+}
+if (!STD.reduced) main().catch(e => {
+  console.warn('[std] WebGL unavailable — showing the HTML card:', e && e.message); de.dataset.err = String(e && e.stack || e);
+  STD.started = false; document.getElementById('gl').classList.remove('on'); de.classList.remove('glphoto', 'gl'); STD.reveal('error');
+});
+</script>
+</body>
+</html>

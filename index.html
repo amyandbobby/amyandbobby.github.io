@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F1EEE8">
+<title>Save the Date</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap">
+<style>
+/* A stationer's proof sheet: the two phone proofs laid side by side on paper, palette chips beneath each. */
+:root {
+  --paper: #F1EEE8;
+  --ink: #1B1B18;
+  --ink-2: #4A4740;
+  --rule: rgba(27, 27, 24, .2);
+  --shadow: rgba(27, 27, 24, .34);
+  --display: "Bodoni Moda", "Bodoni 72", Didot, Georgia, serif;
+  --sans: "Jost", "Futura", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+html { background: var(--paper); }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+.sheet {
+  max-width: 960px; margin: 0 auto;
+  padding-inline: max(16px, 4vw);
+  padding-block: clamp(28px, 6vw, 68px) clamp(32px, 6vw, 60px);
+  display: grid; gap: clamp(26px, 4.5vw, 46px);
+}
+header { display: grid; gap: 12px; justify-items: center; text-align: center; }
+.kicker { margin: 0; font: 500 12px/1.3 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--ink-2); }
+h1 { margin: 0; font: 400 clamp(40px, 7.4vw, 74px)/1 var(--display); letter-spacing: .01em; text-wrap: balance; }
+.lede { margin: 0; max-width: 40ch; font: 400 16px/1.55 var(--sans); color: var(--ink-2); text-wrap: balance; }
+
+.designs {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 5vw, 64px);
+  width: 100%; max-width: 660px; margin: 0 auto;
+}
+.design {
+  display: grid; gap: 14px; justify-items: center; align-content: start; text-align: center;
+  color: inherit; text-decoration: none; min-width: 0;
+}
+.device {
+  width: 100%; max-width: 280px; aspect-ratio: 750 / 1624;
+  border-radius: clamp(16px, 3.6vw, 32px); overflow: hidden;
+  border: 1px solid var(--rule); background: var(--paper);
+  box-shadow: 0 1px 2px rgba(27, 27, 24, .06), 0 22px 44px -22px var(--shadow);
+  transition: transform .5s cubic-bezier(.2, .7, .2, 1), box-shadow .5s cubic-bezier(.2, .7, .2, 1);
+}
+.device img { display: block; width: 100%; height: 100%; max-width: 100%; object-fit: cover; }
+.design:hover .device { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(27, 27, 24, .06), 0 30px 54px -24px var(--shadow); }
+.design:focus-visible { outline: none; }
+.design:focus-visible .device { outline: 2px solid var(--ink); outline-offset: 4px; }
+.name { margin: 2px 0 0; font: 400 clamp(21px, 3.2vw, 28px)/1.1 var(--display); }
+.chips { display: flex; gap: 5px; justify-content: center; }
+.chips i { display: block; width: 9px; height: 9px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(27, 27, 24, .12); }
+.desc { margin: 0; max-width: 27ch; font: 400 14px/1.5 var(--sans); color: var(--ink-2); }
+.open { font: 500 12px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; padding-bottom: 5px; border-bottom: 1px solid var(--rule); transition: border-color .3s; }
+.design:hover .open { border-color: var(--ink); }
+
+.note { margin: 0; text-align: center; font: 400 13px/1.5 var(--sans); color: var(--ink-2); text-wrap: balance; }
+@media (max-width: 420px) {
+  .desc { font-size: 13px; }
+  .lede { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .device, .open { transition: none; }
+  .design:hover .device { transform: none; }
+}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header>
+    <p class="kicker">Isabella &amp; Julian · 20 March 2027</p>
+    <h1>Save the Date</h1>
+    <p class="lede">Two designs, each a single screen on a phone or a laptop. Open one to see it the way your guests will, intro first.</p>
+  </header>
+
+  <section class="designs" aria-label="Designs">
+    <a class="design" href="noir.html">
+      <span class="device"><img src="previews/noir-phone.jpg" width="750" height="1624" alt="The black and white design on a phone: the names, a black and white portrait, and the date stacked large"></span>
+      <span class="name">Black &amp; White</span>
+      <span class="chips" aria-hidden="true"><i style="background:#0E0E0E"></i><i style="background:#55514C"></i><i style="background:#F5F3EF"></i></span>
+      <span class="desc">A projector beam and silver dust form the date, then the print develops.</span>
+      <span class="open">Open</span>
+    </a>
+    <a class="design" href="floral.html">
+      <span class="device"><img src="previews/floral-phone.jpg" width="750" height="1624" alt="The floral design on a phone: an arched garden photograph above the names and the date in olive and dusty rose"></span>
+      <span class="name">Floral</span>
+      <span class="chips" aria-hidden="true"><i style="background:#D9C4A9"></i><i style="background:#C8697F"></i><i style="background:#DE7849"></i><i style="background:#748A4E"></i><i style="background:#2C3524"></i></span>
+      <span class="desc">Petals blow in, gather around the names, then open onto the garden arch.</span>
+      <span class="open">Open</span>
+    </a>
+  </section>
+
+  <p class="note">Each intro runs about six seconds. Tap anywhere to skip it.</p>
+</main>
+<script>
+/* lets each design show a small link back to this page */
+document.querySelectorAll('.design').forEach(function (a) {
+  a.addEventListener('click', function () { try { sessionStorage.setItem('std-designs', '1'); } catch (e) {} });
+});
+</script>
+</body>
+</html>
