@@ -62,7 +62,7 @@
   --g:clamp(6px, 1.25svh, 14px);
   --fs-script:clamp(28px, 4.3svh, 40px);
   --fs-name:clamp(24px, 3.85svh, 36px);
-  --fs-date:clamp(46px, 7.8svh, 76px);
+  --fs-date:min(14.6vw, 8svh, 76px);
   --fs-place:clamp(18px, 2.55svh, 24px);
   --fs-label:12px;
   --fs-note:clamp(16px, 2.05svh, 18px);
@@ -93,7 +93,8 @@ body{
 .frame{position:relative;width:min(calc(100cqw - 18px), calc((100cqh - 9px) * .75));aspect-ratio:3/4}
 .arch{position:absolute;inset:0;border-radius:9999px 9999px 0 0;overflow:hidden;background:transparent}
 .arch img{width:100%;height:100%;object-fit:cover;object-position:49% 38%;transform:scale(var(--zoom,1.12));transform-origin:49% 38%;display:block;transition:opacity .5s}
-.frame-line{position:absolute;inset:-8px -8px -8px;border:1px solid var(--rule);border-radius:9999px 9999px 0 0;pointer-events:none}
+.frame-line{position:absolute;inset:-8px -8px 0;border:1px solid var(--rule);border-radius:9999px 9999px 0 0;pointer-events:none}
+.arch,.frame-line{-webkit-mask-image:linear-gradient(#000 64%, transparent 100%);mask-image:linear-gradient(#000 64%, transparent 100%)}
 
 .names{grid-area:names;display:flex;align-items:baseline;justify-content:center;gap:.3em;margin:0 0 calc(var(--g)*1.3);font-weight:500}
 .n1,.n2{font:500 var(--fs-name)/1 "Bodoni Moda",Didot,"Bodoni 72",serif;font-variation-settings:"opsz" var(--opsz-name,28);text-transform:uppercase;letter-spacing:.11em;margin-right:-.11em;color:var(--olive)}
@@ -103,14 +104,11 @@ body{
 .date{
   grid-area:date;font:400 var(--fs-date)/.86 "Bodoni Moda",Didot,"Bodoni 72",serif;color:var(--olive);
   font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1;
-  display:grid;grid-template-columns:auto auto auto;grid-template-areas:". dd ." "s1 mm s2" ". yy .";
-  align-items:center;justify-items:center;column-gap:.16em;margin:calc(var(--g)*1.5) 0 calc(var(--g)*.75);
+  display:flex;align-items:center;justify-content:center;gap:.24em;line-height:1;
+  margin:calc(var(--fs-date) * -.5) 0 calc(var(--g)*.6);position:relative;z-index:2;
   letter-spacing:.01em;font-variation-settings:"opsz" 96;
 }
-.date .dd{grid-area:dd}.date .mm{grid-area:mm}.date .yy{grid-area:yy}
-.date .s1{grid-area:s1}.date .s2{grid-area:s2}
-.date .sep{font-size:.62em;color:var(--rose-ink);line-height:1}
-.date .cc{display:none}
+.date .sep{font-size:.7em;color:var(--rose-ink);line-height:1;transform:translateY(-.05em)}
 
 .rule{grid-area:rule;display:flex;align-items:center;gap:12px;width:min(78%, 300px);margin:calc(var(--g)*1.4) 0 calc(var(--g)*1.1)}
 .rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--rule)}
@@ -781,7 +779,7 @@ function measure() {
   const arch = document.getElementById('arch').getBoundingClientRect();
   L.photo = arch.width > 4 && arch.height > 4 ? arch : null;
   L.landscape = isLandscape();
-  L.inkEls = L.landscape ? [document.getElementById('names')] : [document.getElementById('date')];
+  L.inkEls = [document.getElementById('names')];
   const rs = L.inkEls.map(el => el.getBoundingClientRect());
   const u = rs.reduce((a, r) => ({ l: Math.min(a.l, r.left), t: Math.min(a.t, r.top), r: Math.max(a.r, r.right), b: Math.max(a.b, r.bottom) }), { l: 1e9, t: 1e9, r: -1e9, b: -1e9 });
   L.ink = u;
@@ -814,7 +812,7 @@ function measure() {
   L.wc = new THREE.Vector2(cx - W / 2, H / 2 - cy);
   L.wr = new THREE.Vector2(Rx, Ry);
   L.inkBox = new THREE.Vector4(u.l - W / 2, H / 2 - u.b, u.r - W / 2, H / 2 - u.t);   // world: x right, y up
-  L.archMode = L.landscape && !!L.photo;
+  L.archMode = !!L.photo;
   if (L.archMode) {                                     // floral frame around the photograph's arch, at the visual centre
     const p = L.photo, r = p.width / 2, ax = p.left + r - W / 2, yT = H / 2 - p.top, cyc = yT - r;
     const R0 = r + 8 + petal * .5, yEnd = yT - p.height * .6;
@@ -907,7 +905,7 @@ function buildInk() {
   inkTex.generateMipmaps = true; inkTex.minFilter = THREE.LinearMipmapLinearFilter; inkTex.magFilter = THREE.LinearFilter;
   comp.uniforms.tInk.value = inkTex;
   comp.uniforms.uInkRect.value.set(x0, y0, w, h);
-  comp.uniforms.uInkDir.value = L.landscape ? 0 : .55;
+  comp.uniforms.uInkDir.value = 0;
 }
 
 const comp = new THREE.ShaderMaterial({
@@ -927,7 +925,7 @@ function syncLayoutUniforms() {
   comp.uniforms.uResPx.value.set(Math.round(W * pr), Math.round(H * pr)); comp.uniforms.uDpr.value = pr;
   if (L.photo) comp.uniforms.uPhotoRect.value.set(L.photo.left, L.photo.top, L.photo.width, L.photo.height);
   comp.uniforms.uPhotoOn.value = photoTex && L.photo ? 1 : 0;
-  comp.uniforms.uFadeFrac.value = L.landscape ? .36 : 0;
+  comp.uniforms.uFadeFrac.value = .36;
   const z = parseFloat(getComputedStyle(document.getElementById('photo')).getPropertyValue('--zoom')) || CFG.photo.zoom;
   comp.uniforms.uCrop.value.z = z;
 }
@@ -1122,11 +1120,10 @@ function buildAmbient(startT) {
 
 /* ─────────── DOM choreography (pure function of t → deterministic for ?t=) ─────────── */
 const domEls = DOM_TL.map(([sel, s, d, mode]) => ({ els: [...document.querySelectorAll(sel)], s, d, mode }));
-const namesEls = L.landscape ? ['n1', 'n2'].map(id => document.getElementById(id)) : ['n1', 'date', 'n2'].map(id => document.getElementById(id));
+const namesEls = ['n1', 'n2'].map(id => document.getElementById(id));
 let skipAt = null;
 function applyDOM(t, sinceSkip) {
   for (const it of domEls) {
-    if (!L.landscape && it.els[0]?.id === 'date') continue;
     let e = outCubic(seg(t, it.s, it.s + it.d));
     if (sinceSkip != null) e = Math.max(e, outCubic(seg(sinceSkip, 0, .55)));
     for (const el of it.els) {
