@@ -133,11 +133,6 @@ body{
   font:500 11.5px/1 "Jost",system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--olive-2);
   background:none;border:0;padding:10px 4px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .5s}
 .skip.on{opacity:.82;pointer-events:auto}
-.back{position:fixed;z-index:3;display:none;top:max(2px, env(safe-area-inset-top));left:max(6px, env(safe-area-inset-left));padding:8px 10px;
-  font:500 11px/1 "Jost",system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--olive-2);text-decoration:none;opacity:.8}
-.back:hover{opacity:1;color:var(--rose-ink)}
-.back:focus-visible{opacity:1;outline:1px solid var(--rose-ink);outline-offset:2px}
-html.from-designs.done .back,html.from-designs.static .back{display:block}
 
 /* ───────────── landscape: centred editorial (ref #1 desktop) ───────────── */
 @media (orientation:landscape){
@@ -227,7 +222,6 @@ html.static .arch img{animation-name:fade}
 </main>
 
 <button class="skip" id="skip" type="button" tabindex="-1">Skip intro</button>
-<a class="back" id="back" href="./" aria-label="Back to both designs">‹ Back</a>
 
 <script>
 /* ═════════════════════════ CONFIG ═════════════════════════ */
@@ -290,11 +284,6 @@ window.CONFIG = {
     });
   }
 
-  // opened from the two-design overview: a quiet way back, once the card is showing
-  try { if (sessionStorage.getItem('std-designs') === '1') de.classList.add('from-designs'); } catch (_) {}
-  document.getElementById('back').addEventListener('click', function (e) {
-    if (history.length > 1) { e.preventDefault(); history.back(); }
-  });
 
   // state shared with the WebGL module + graceful fallbacks
   var q = new URLSearchParams(location.search);
