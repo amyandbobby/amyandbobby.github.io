@@ -1,14 +1,14 @@
 # Save the Date
 
-Two single-screen wedding save-the-date pages for phone and desktop. Each opens with a short Three.js intro and settles on the card.
+Amy & Bobby's save-the-date, live at https://amyandbobby.github.io/. A single screen on phone and desktop that opens with a short Three.js intro and settles on the card.
 
 | Page | Design |
 | --- | --- |
-| [`noir.html`](noir.html) | Black & white. A projector beam and silver dust form the date, then the screen develops from black to paper like a print. |
-| [`floral.html`](floral.html) | Floral, in sand, dusty rose, terracotta, sage and olive. 3D petals blow in, gather into a wreath around the names, then part to reveal the arched garden photo. |
-| [`index.html`](index.html) | An overview with both designs side by side. Guests don't need it. |
+| [`index.html`](index.html) | **The save-the-date guests receive** at https://amyandbobby.github.io/ — floral, in sand, dusty rose, terracotta, sage and olive. 3D petals blow in and gather into a wreath around the names and date, then part as the beach photo paints in and the text settles into place. |
+| [`floral.html`](floral.html) | Forwards to the main address, so older links keep working. |
+| [`noir.html`](noir.html) | The black & white alternate. Not linked from the site. |
 
-![Black & white on a phone](previews/noir-phone.jpg) ![Floral on a phone](previews/floral-phone.jpg)
+![Floral on a phone](previews/floral-phone.jpg)
 
 ## Preview locally
 
