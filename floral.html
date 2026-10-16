@@ -84,10 +84,10 @@ body{
   display:grid;justify-items:center;align-content:stretch;text-align:center;
   padding:var(--pad-t) var(--pad-x) var(--pad-b);
   grid-template-columns:minmax(0,1fr);
-  grid-template-rows:auto minmax(0,1fr) auto auto auto auto auto auto auto;
-  grid-template-areas:"eyebrow" "photo" "n1" "date" "n2" "rule" "when" "place" "foot";
+  grid-template-rows:auto auto minmax(0,1fr) auto auto auto auto auto;
+  grid-template-areas:"eyebrow" "names" "photo" "date" "rule" "when" "place" "foot";
 }
-.eyebrow{grid-area:eyebrow;font:400 var(--fs-script)/1.12 "Pinyon Script",cursive;color:var(--rose-ink);margin-bottom:calc(var(--g)*.7);letter-spacing:.01em}
+.eyebrow{grid-area:eyebrow;font:400 var(--fs-script)/1.12 "Pinyon Script",cursive;color:var(--rose-ink);margin-bottom:calc(var(--g)*.15);letter-spacing:.01em}
 
 .photo{grid-area:photo;width:100%;height:100%;min-height:0;container-type:size;display:flex;align-items:center;justify-content:center}
 .frame{position:relative;width:min(calc(100cqw - 18px), calc((100cqh - 9px) * .75));aspect-ratio:3/4}
@@ -95,18 +95,16 @@ body{
 .arch img{width:100%;height:100%;object-fit:cover;object-position:49% 38%;transform:scale(var(--zoom,1.12));transform-origin:49% 38%;display:block;transition:opacity .5s}
 .frame-line{position:absolute;inset:-8px -8px -8px;border:1px solid var(--rule);border-radius:9999px 9999px 0 0;pointer-events:none}
 
-.names{display:contents;font-weight:500}
+.names{grid-area:names;display:flex;align-items:baseline;justify-content:center;gap:.3em;margin:0 0 calc(var(--g)*1.3);font-weight:500}
 .n1,.n2{font:500 var(--fs-name)/1 "Bodoni Moda",Didot,"Bodoni 72",serif;font-variation-settings:"opsz" var(--opsz-name,28);text-transform:uppercase;letter-spacing:.11em;margin-right:-.11em;color:var(--olive)}
-.n1{grid-area:n1;margin-top:calc(var(--g)*1.5)}
-.n2{grid-area:n2}
-.amp{display:none}
+.amp{display:inline;font:400 calc(var(--fs-name)*1.12)/.8 "Pinyon Script",cursive;color:var(--rose-ink);letter-spacing:0;transform:translateY(.02em)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 .date{
   grid-area:date;font:400 var(--fs-date)/.86 "Bodoni Moda",Didot,"Bodoni 72",serif;color:var(--olive);
   font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1;
   display:grid;grid-template-columns:auto auto auto;grid-template-areas:". dd ." "s1 mm s2" ". yy .";
-  align-items:center;justify-items:center;column-gap:.16em;margin:calc(var(--g)*.9) 0 calc(var(--g)*.75);
+  align-items:center;justify-items:center;column-gap:.16em;margin:calc(var(--g)*1.5) 0 calc(var(--g)*.75);
   letter-spacing:.01em;font-variation-settings:"opsz" 96;
 }
 .date .dd{grid-area:dd}.date .mm{grid-area:mm}.date .yy{grid-area:yy}
@@ -158,7 +156,7 @@ html.from-designs.done .back,html.from-designs.static .back{display:block}
     --pad-b:max(clamp(20px, 3.8svh, 52px), env(safe-area-inset-bottom));
   }
   .card{grid-template-rows:auto auto minmax(0,1fr) auto auto auto auto auto;
-    grid-template-areas:"eyebrow" "names" "photo" "date" "when" "place" "rule" "foot";}
+    grid-template-areas:"eyebrow" "names" "photo" "date" "rule" "when" "place" "foot";}
   .eyebrow{margin-bottom:0}
   .names{grid-area:names;display:flex;align-items:baseline;justify-content:center;gap:.3em;margin:calc(var(--g)*.2) 0 calc(var(--g)*2.3)}
   .n1,.n2{margin:0 -.11em 0 0}
@@ -170,19 +168,15 @@ html.from-designs.done .back,html.from-designs.static .back{display:block}
     margin:calc(var(--fs-date) * -.5) 0 calc(var(--g)*.6);position:relative;z-index:2}
   .date .sep{font-size:.7em;transform:translateY(-.05em)}
   .date .cc{display:inline}
-  .when{margin-top:calc(var(--g)*.2)}
-  .place{margin-top:calc(var(--g)*.7)}
-  .venue{display:inline}
-  .region{display:inline;margin:0}
-  .place .bul{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--rose-ink);margin:0 1em;vertical-align:.32em}
-  .rule{width:min(34vw, 420px);margin:calc(var(--g)*1.25) 0 calc(var(--g)*.95)}
-  .foot{flex-direction:row;gap:22px;margin-top:0}
-  .foot .note::after{content:"";display:inline-block;width:28px;height:1px;background:var(--rule);vertical-align:.3em;margin-left:22px}
+  .place{margin-top:calc(var(--g)*.6)}
+  .rule{width:min(34vw, 420px);margin:calc(var(--g)*.9) 0 calc(var(--g)*.8)}
+  .foot{margin-top:calc(var(--g)*1.1)}
 }
-@media (orientation:portrait){ .place .bul{display:none} .venue{letter-spacing:.06em;margin-right:-.06em;text-wrap:balance} .when{text-wrap:balance} }
+.place .bul{display:none}
+@media (orientation:portrait){ .venue{letter-spacing:.06em;margin-right:-.06em;text-wrap:balance} .when{text-wrap:balance} }
 @media (orientation:landscape) and (max-height:520px){
   .photo{display:none}
-  .card{grid-template-rows:none;grid-auto-rows:auto;align-content:center;grid-template-areas:"eyebrow" "names" "date" "when" "place" "rule" "foot"}
+  .card{grid-template-rows:none;grid-auto-rows:auto;align-content:center;grid-template-areas:"eyebrow" "names" "date" "rule" "when" "place" "foot"}
   .date{margin-top:0}
 }
 @media (max-width:359px){ .label{letter-spacing:.2em;margin-right:-.2em} }
@@ -787,7 +781,7 @@ function measure() {
   const arch = document.getElementById('arch').getBoundingClientRect();
   L.photo = arch.width > 4 && arch.height > 4 ? arch : null;
   L.landscape = isLandscape();
-  L.inkEls = L.landscape ? [document.getElementById('names')] : ['n1', 'date', 'n2'].map(id => document.getElementById(id));
+  L.inkEls = L.landscape ? [document.getElementById('names')] : [document.getElementById('date')];
   const rs = L.inkEls.map(el => el.getBoundingClientRect());
   const u = rs.reduce((a, r) => ({ l: Math.min(a.l, r.left), t: Math.min(a.t, r.top), r: Math.max(a.r, r.right), b: Math.max(a.b, r.bottom) }), { l: 1e9, t: 1e9, r: -1e9, b: -1e9 });
   L.ink = u;
