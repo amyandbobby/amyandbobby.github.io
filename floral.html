@@ -337,11 +337,11 @@ THREE.ColorManagement.enabled = false; // everything is authored in display (sRG
 const TL = {
   gather: [1.0, 2.45], settle: [1.85, 2.75], gust: [3.38, 3.72],
   ink: [2.2, 3.15], namesHTML: [3.15, 3.42], inkOff: 3.5, protect: [1.9, 2.3],
-  reveal: [3.35, 5.0], end: 5.6,
+  reveal: [3.35, 5.0], move: [3.5, 4.6], end: 5.6,
 };
 const DOM_TL = [ // selector, start, duration, mode
   ['.eyebrow', 3.62, .85], ['.amp', 3.1, .32, 'fade'], ['.frame-line', 4.35, .9, 'fade'],
-  ['#date', 3.85, .85], ['.rule', 4.15, .8], ['.when', 4.1, .85], ['.place', 4.28, .85], ['.foot', 4.5, .85],
+  ['.rule', 4.15, .8], ['.when', 4.1, .85], ['.place', 4.28, .85], ['.foot', 4.5, .85],
 ];
 
 /* ─────────── helpers ─────────── */
@@ -781,7 +781,7 @@ function measure() {
   const arch = document.getElementById('arch').getBoundingClientRect();
   L.photo = arch.width > 4 && arch.height > 4 ? arch : null;
   L.landscape = isLandscape();
-  L.inkEls = [document.getElementById('names')];
+  L.inkEls = ['names', 'date'].map(id => document.getElementById(id));
   const rs = L.inkEls.map(el => el.getBoundingClientRect());
   const u = rs.reduce((a, r) => ({ l: Math.min(a.l, r.left), t: Math.min(a.t, r.top), r: Math.max(a.r, r.right), b: Math.max(a.b, r.bottom) }), { l: 1e9, t: 1e9, r: -1e9, b: -1e9 });
   L.ink = u;
@@ -789,9 +789,7 @@ function measure() {
   const a = (u.r - u.l) / 2, b = (u.b - u.t) / 2, petal = Math.max(18, Math.min(W, H) * .045);
   const band = petalSize() * 1.2, cx = (u.l + u.r) / 2, cyBox = (u.t + u.b) / 2;
   let Rx, Ry, cy = cyBox;
-  if (L.landscape) {                                    // open laurel garland cradling the names
-    Rx = Math.min(a + petal * 3, W / 2 - band - petal); Ry = b + petal * 1.5;
-  } else {
+  {                                                     // a closed wreath around the names and the date
     const m = petal * .5, edge = petal * .55 + band;
     const corners = rs.flatMap(r => [[r.left, r.top], [r.right, r.top], [r.left, r.bottom], [r.right, r.bottom]]);
     let best = null;
@@ -814,7 +812,7 @@ function measure() {
   L.wc = new THREE.Vector2(cx - W / 2, H / 2 - cy);
   L.wr = new THREE.Vector2(Rx, Ry);
   L.inkBox = new THREE.Vector4(u.l - W / 2, H / 2 - u.b, u.r - W / 2, H / 2 - u.t);   // world: x right, y up
-  L.archMode = !!L.photo;
+  L.archMode = false;                                   // the wreath frames the text, not the arch
   if (L.archMode) {                                     // floral frame around the photograph's arch, at the visual centre
     const p = L.photo, r = p.width / 2, ax = p.left + r - W / 2, yT = H / 2 - p.top, cyc = yT - r;
     const R0 = r + 8 + petal * .5, yEnd = yT - p.height * .6;
@@ -836,6 +834,31 @@ function measure() {
     const p = L.photo; L.keep.push({ l: p.left - W / 2 + 6, r: p.right - W / 2 - 6, t: H / 2 - p.top - 6, b: H / 2 - p.bottom + 6 });
   }
 }
+/* the intro starts with the names and the date together in the middle of the screen, inside the wreath;
+   as the petals part they glide to their places on the card (names under the eyebrow, date on the print) */
+const CL = { els: [], on: false, moved: false };
+function applyCluster(p) {
+  for (const c of CL.els) {
+    const k = 1 - p;
+    c.el.style.transformOrigin = '50% 50%';
+    c.el.style.transform = p >= 1 ? '' : `translate3d(${(c.dx * k).toFixed(2)}px,${(c.dy * k).toFixed(2)}px,0) scale(${(c.s + (1 - c.s) * p).toFixed(4)})`;
+  }
+}
+function clusterText() {
+  const nEl = document.getElementById('names'), dEl = document.getElementById('date');
+  const rN = nEl.getBoundingClientRect(), rD = dEl.getBoundingClientRect();
+  if (!rN.width || !rD.width) return;
+  const W0 = innerWidth, H0 = innerHeight, gap = rN.height * .3;
+  // small enough to sit inside the wreath (phones), never larger than the card
+  const s = Math.min(1, (W0 < 700 ? .55 : .5) * W0 / Math.max(rN.width, rD.width), .4 * H0 / (rN.height + gap + rD.height));
+  const top = H0 * .47 - (rN.height + gap + rD.height) * s / 2;
+  CL.els = [
+    { el: nEl, dx: W0 / 2 - (rN.left + rN.width / 2), dy: top + rN.height * s / 2 - (rN.top + rN.height / 2), s },
+    { el: dEl, dx: W0 / 2 - (rD.left + rD.width / 2), dy: top + (rN.height + gap) * s + rD.height * s / 2 - (rD.top + rD.height / 2), s },
+  ];
+  CL.on = true; applyCluster(0);
+}
+if (doIntro) clusterText();
 measure();
 
 /* ─────────── renderer + camera ─────────── */
@@ -885,12 +908,13 @@ function buildInk() {
   ctx.textBaseline = 'alphabetic';
   const range = document.createRange();
   for (const el of L.inkEls) {
+    const sc = el.getBoundingClientRect().width / (el.offsetWidth || 1);   // the intro scales the text down on phones
     const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
     let node;
     while ((node = walker.nextNode())) {
       const parent = node.parentElement, cs = getComputedStyle(parent);
       if (cs.display === 'none' || parent.closest('.sr')) continue;
-      const fs = parseFloat(cs.fontSize), om = /"opsz"\s+([\d.]+)/.exec(cs.fontVariationSettings || ''), drawFs = om ? parseFloat(om[1]) : fs, k = fs / drawFs;
+      const fs = parseFloat(cs.fontSize) * sc, om = /"opsz"\s+([\d.]+)/.exec(cs.fontVariationSettings || ''), drawFs = om ? parseFloat(om[1]) : fs, k = fs / drawFs;
       ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${drawFs}px ${cs.fontFamily}`;   // canvas uses auto optical sizing: draw at the pinned opsz, scale up
       ctx.fillStyle = cs.color;
       const asc = ctx.measureText('H').fontBoundingBoxAscent * k;
@@ -1022,7 +1046,7 @@ function buildIntro() {
     uTime: { value: 0 }, uDt: { value: 1 / 60 }, uGather: { value: 0 }, uGust: { value: 0 }, uD: { value: D }, uWindSpd: { value: windSpd }, uTurn: { value: .11 },
     uWindDir: { value: wd }, uView: { value: new THREE.Vector2(W, H) }, uC: { value: L.wc }, uR: { value: L.wr },
     uBand: { value: L.archMode ? L.archBand : petalSize() * (L.landscape ? 1.25 : 1.15) }, uRingDepth: { value: L.landscape ? .14 : .10 },
-    uArc: { value: L.archMode ? -1 : L.landscape ? 3.55 : 7 },
+    uArc: { value: L.archMode ? -1 : 7 },
     uProtect: { value: 0 }, uPad: { value: petalSize() * 2.2 }, uInkBox: { value: L.inkBox },
     uArchA: { value: L.arch || new THREE.Vector4() }, uArchB: { value: L.archB || new THREE.Vector2(1, 1e5) },
   });
@@ -1122,7 +1146,7 @@ function buildAmbient(startT) {
 
 /* ─────────── DOM choreography (pure function of t → deterministic for ?t=) ─────────── */
 const domEls = DOM_TL.map(([sel, s, d, mode]) => ({ els: [...document.querySelectorAll(sel)], s, d, mode }));
-const namesEls = ['n1', 'n2'].map(id => document.getElementById(id));
+const namesEls = ['n1', 'n2', 'date'].map(id => document.getElementById(id));
 let skipAt = null;
 function applyDOM(t, sinceSkip) {
   for (const it of domEls) {
@@ -1136,8 +1160,14 @@ function applyDOM(t, sinceSkip) {
   let n = sstep(...TL.namesHTML, t);
   if (sinceSkip != null) n = Math.max(n, seg(sinceSkip, 0, .4));
   for (const el of namesEls) el.style.opacity = n.toFixed(3);
+  if (CL.on) {
+    let m = inOut(seg(t, ...TL.move));
+    if (sinceSkip != null) m = Math.max(m, outCubic(seg(sinceSkip, 0, .55)));
+    applyCluster(m);
+  }
 }
 function finishDOM() {
+  if (CL.on) { applyCluster(1); CL.on = false; CL.moved = true; }
   document.querySelectorAll('.rv').forEach(el => { el.style.opacity = ''; el.style.transform = ''; el.style.filter = ''; });
   de.classList.add('done');
 }
@@ -1162,6 +1192,7 @@ function toAmbient(now) {
   comp.uniforms.uReveal.value = 1; comp.uniforms.uDap.value = .015; comp.uniforms.uBreeze.value = 1; dappleMat.uniforms.uMask.value = 1;
   skipBtn.classList.remove('on'); skipBtn.setAttribute('tabindex', '-1');
   finishDOM();
+  if (CL.moved) { CL.moved = false; measure(); bakePaper(); syncLayoutUniforms(); }   // the text is in its final places now
   if (dpr !== DPR_AMB) { dpr = DPR_AMB; renderer.setPixelRatio(dpr); renderer.setSize(W, H, false); syncLayoutUniforms(); }
   mode = 'ambient';
   ambT0 = now;
@@ -1275,7 +1306,8 @@ requestAnimationFrame(now => {
 }
 if (!STD.reduced) main().catch(e => {
   console.warn('[std] WebGL unavailable — showing the HTML card:', e && e.message); de.dataset.err = String(e && e.stack || e);
-  STD.started = false; document.getElementById('gl').classList.remove('on'); de.classList.remove('glphoto', 'gl'); STD.reveal('error');
+  STD.started = false; document.querySelectorAll('#names,#date').forEach(el => { el.style.transform = ''; });
+  document.getElementById('gl').classList.remove('on'); de.classList.remove('glphoto', 'gl'); STD.reveal('error');
 });
 </script>
 </body>
