@@ -216,7 +216,8 @@ html.static .arch img{animation-name:fade}
 
   <div class="rule rv" style="--i:4" aria-hidden="true"><span class="dots"><i style="background:#D9C4A9"></i><i style="background:#C8697F"></i><i style="background:#DE7849"></i><i style="background:#748A4E"></i><i style="background:#2C3524"></i></span></div>
 
-  <p class="when label rv" style="--i:4" data-c="when">Sunday · March 7, 2027 · 4:00 PM</p>
+  <p class="sr" data-c="whenLong">Sunday, March 7, 2027, at 4:00 PM</p>
+  <p class="when label rv" style="--i:4" data-c="when" aria-hidden="true">Sunday · 4:00 PM</p>
   <p class="place rv" style="--i:5"><span class="venue" data-c="venue">The House on the River</span><span class="bul" aria-hidden="true"></span><span class="region label" data-c="region">Fort Lauderdale, Florida</span></p>
 
   <div class="foot rv" style="--i:6">
@@ -234,7 +235,8 @@ window.CONFIG = {
   eyebrow: 'Save the Date',
   first1: 'Amy', last1: '',
   first2: 'Bobby',  last2: '',
-  when: 'Sunday · March 7, 2027 · 4:00 PM',
+  when: 'Sunday · 4:00 PM',                      // the big date already shows the day, month and year
+  whenLong: 'Sunday, March 7, 2027, at 4:00 PM',  // read aloud by screen readers in place of the big date
   date: { mm: '03', dd: '07', yyyy: '2027' },   // shown month-first: 03 · 07 · 27
   venue: 'The House on the River',
   region: 'Fort Lauderdale, Florida',
